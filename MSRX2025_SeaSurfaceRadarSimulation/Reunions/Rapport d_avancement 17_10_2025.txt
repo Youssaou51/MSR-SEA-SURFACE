@@ -1,0 +1,48 @@
+Rapport d'avancement 17/10/2025
+
+----> Bilan
+
+- Validation des modèles (semi-empiriques)
+
+- Choix de la technologie de développement de l’interface (GUI Toolbox de MATLAB)
+
+- Développement du squelette de l’interface 
+
+- Ajout progressif des modèles semi-empiriques et expérimentaux
+ 
+- Ajustement  progressif de l’interface ( changement de la langue de l’interface, affichage de la NRCS calculée dans la section résultats , remplacement de l’angle de rasance par l’angle d’incidence, remplacement du paramètre état de mer par vitesse du vent u10…)
+
+- Vérification de l’utilisabilité de l’interface sans installation de la Toolbox 
+
+- Ajout du paramètre Frequency band 
+
+- Unification de la NRCS en dB sur l’interface
+
+
+----> Travaux réalisés au cours de la semaine 
+
+Les travaux réalisés au cours de la semaine s'alignent avec ce qui a été dit lors de la dernière réunion. J'ai éssayé d'ajuster 
+
+- Ajustement de la section résultats: préçision de l'angle pour lequel est calculé la NRCS affichée dans cette section.
+
+- Gestion de la courbe entre deux calculs: la courbe est maintenant vidée à chaque nouveau calcul pour éviter l'affichage de données obsolètes en cas de warning, ce qui pourrait tromper l'utilisteur.
+
+- Remplacement du bouton 'save' par le bouton 'export': le bouton 'export' est activé et permet d'exporter les données de la courbe ( theta et NRCS ) dans un fichier .csv avec la nomenclature f_freq_pol_u10_phi_modèle.csv
+
+- Ajustement de l'affichage des modèles : en fonction de la bande de fréquence sélectionnée, les modèles selectionnables ne sont que ceux utilisables dans cette bande là.
+
+- Ajout d'un bouton 'overlay' : toutes les courbes générées lors des calculs sont stockées dans une structure et peuvent etre affichées sur le graphique grace au bouton 'overlay'
+Peut-etre penser à une meilleure logique pour n'afficher que les deux (trois...) dernières courbes ???? A voir 
+
+- Ajout d'un nouvel onglet pour la génération de la surface de mer : le nouvel onglet permet pour l'instant de fixer les valeurs des paramètres d'entrées 
+(wind speed, wind direction, fetch, length x, length y, radar frequency, samples per wavelength). 
+La creation d'onglets a été plutot fastidieuse, mais la génération de surface est implémentée, par contre l'agencement de cet onglet est peut-etre à améliorer. A voir...
+
+
+----> A faire
+
+- Adapter la logique d'exportation pour plusieurs courbes ( dépend de la logique finale pour la superposition des courbes je pense...)
+
+- Implémenter le modèle statistique à l'interface 
+
+- Penser à comment optimiser l'utilisation mémoire ( pour la génération et surtout lors de l'ajout du modèle statistique)
