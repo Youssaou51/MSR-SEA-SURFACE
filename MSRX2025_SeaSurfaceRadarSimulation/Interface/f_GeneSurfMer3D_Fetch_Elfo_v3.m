@@ -63,7 +63,7 @@ if prec == 1 % Single precision
     %
     u10 = single(u10) ; 
     phiw_d = single(phiw_d) ; 
-    sd = single(sd) ; 
+    sd = single(sd) ;  
     prec = single(prec) ; 
     fetch_m = single(fetch_m) ; 
 end
@@ -229,9 +229,8 @@ fprintf('Hermitian GWN (Gaussian white noise) generation... ') ;
 % randn('seed',double(sd+100)) ; BI = randn([n_x n_y]) ; 
 % rng(double(sd),'v4')     ; BR = randn([n_x n_y]) ; 
 % rng(double(sd+100),'v4') ; BI = randn([n_x n_y]) ; 
-rng((sd))     ; B0 = randn([n_x n_y]) ; 
-rng((sd+100)) ; BI = randn([n_x n_y]) ; 
-
+rng(double(sd),     'twister') ; B0 = randn([n_x n_y]) ;
+rng(double(sd+100), 'twister') ; BI = randn([n_x n_y]) ;
 B0 = B0 + 1i * BI ;
 clear BI 
 

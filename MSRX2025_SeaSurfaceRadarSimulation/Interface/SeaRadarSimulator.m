@@ -1771,20 +1771,21 @@ end
 function generateSeaSurfaceCallback()
     global app;
 
-    % Fenetre de chargement durant la génération de surface 
-    d = uiprogressdlg(app.handles.fig,'Title','Génération','Message','Generation in progress...','Indeterminate','on');
+    % Fenetre de chargement
+    d = uiprogressdlg(app.handles.fig, 'Title', 'Génération', ...
+        'Message', 'Generation in progress...', 'Indeterminate', 'on');
     drawnow;
-    
-    % Récupération des paramètres depuis les champs
-    u10_ms = app.handles.windSpeedEditSea.Value;% Vitesse du vent (m/s)
-    phWind_d = app.handles.windDirEdit.Value;   % Direction du vent (deg)
-    fetch_m = app.handles.fetchEdit_Sea.Value;  % Fetch (m)
-    lx_sea_m = app.handles.lxEdit.Value;        % Longueur X (m)
-    ly_sea_m = app.handles.lyEdit.Value;        % Longueur Y (m)
-    freq_GHz = app.handles.freqEditSea.Value;   % Fréquence radar (GHz)
-    nlb0 = app.handles.nlbEdit.Value;           % Nombre d'échantillons par longueur d'onde
 
-    % Validation des entrées
+    % Récupération des paramètres
+    u10_ms   = app.handles.windSpeedEditSea.Value;
+    phWind_d = app.handles.windDirEdit.Value;
+    fetch_m  = app.handles.fetchEdit_Sea.Value;
+    lx_sea_m = app.handles.lxEdit.Value;
+    ly_sea_m = app.handles.lyEdit.Value;
+    freq_GHz = app.handles.freqEditSea.Value;
+    nlb0     = app.handles.nlbEdit.Value;
+
+    % Validation
     if u10_ms < 1 || u10_ms > 10
         showWarning('Warning: Wind Speed u10 must be between 1 and 10 m/s.');
         return;
@@ -1795,173 +1796,180 @@ function generateSeaSurfaceCallback()
     end
     if fetch_m <= 0
         showWarning('Warning: Fetch must be positive.');
-        fetch_m = 500e3; % Valeur par défaut
+        fetch_m = 500e3;
     end
     if lx_sea_m <= 0 || ly_sea_m <= 0
         showWarning('Warning: Length X and Y must be positive.');
-        lx_sea_m = 40;
-        ly_sea_m = 30;
+        lx_sea_m = 40; ly_sea_m = 30;
     end
     if freq_GHz <= 0
         showWarning('Warning: Radar Frequency must be positive.');
-        freq_GHz = 1.3; % Valeur par défaut
+        freq_GHz = 1.3;
     end
     if nlb0 < 1
         showWarning('Warning: Samples per Wavelength must be at least 1.');
-        nlb0 = 8; % Valeur par défaut
+        nlb0 = 8;
     end
 
     % Calculs préliminaires
-    c_ms = 3e8; % Vitesse de la lumière (m/s)
-    lb0_m = c_ms / (freq_GHz * 1e9); % Longueur d'onde EM (m)
-    dxy_m = lb0_m / nlb0; % Pas d'échantillonnage (m)
+    c_ms  = 3e8;
+    lb0_m = c_ms / (freq_GHz * 1e9);
+    dxy_m = lb0_m / nlb0;
 
-    % Vérification de la longueur minimale de la surface
-    g = 9.81; % Accélération gravitationnelle (m/s^2)
-    x0 = 2.2e4; % Constante en m
-    k0 = g / u10_ms^2; % en rad/m
-    xmaj = k0 * fetch_m; % Sans dimension
-    omgc = 0.84 * tanh((xmaj / x0)^0.4)^(-0.75); % [1997_Elfouhaily_JGR,eq.37]
-    kp = k0 * omgc^2; % en rad/m
-    kmin = 0.3 * kp; % [Pinel_2014_TGRS]
-    lmin = 2 * pi / kmin; % Longueur minimale
-
+    % Vérification longueur minimale
+    g    = 9.81; x0 = 2.2e4;
+    k0   = g / u10_ms^2;
+    xmaj = k0 * fetch_m;
+    omgc = 0.84 * tanh((xmaj/x0)^0.4)^(-0.75);
+    kp   = k0 * omgc^2;
+    kmin = 0.3 * kp;
+    lmin = 2*pi / kmin;
     if lx_sea_m < lmin || ly_sea_m < lmin
-        showWarning('Warning: The length of the sea surface (in x or y direction) is not long enough to include all gravity waves.');
-        %return;
+        showWarning('Warning: Surface not long enough to include all gravity waves.');
     end
 
-    % Ajustement du nombre d'échantillons
- 
-    n_x = round(lx_sea_m / dxy_m / 2) * 2;
-    n_y = round(ly_sea_m / dxy_m / 2) * 2;  
-    npoints = n_x * n_y ;
+    % Nombre d'échantillons
+    n_x    = round(lx_sea_m / dxy_m / 2) * 2;
+    n_y    = round(ly_sea_m / dxy_m / 2) * 2;
+    npoints = n_x * n_y;
 
-
-    % Détection de la RAM disponible 
+    % Détection RAM disponible
     if ispc
-        % Windows
-        [~, sys] = memory;
+        [~, sys]       = memory;
         totalRAM_bytes = sys.PhysicalMemory.Total;
     elseif ismac
-        % macOS
-        [~, cmdout] = system('sysctl hw.memsize');
+        [~, cmdout]    = system('sysctl hw.memsize');
         totalRAM_bytes = sscanf(cmdout, 'hw.memsize: %d');
     else
-        % Linux
         [status, cmdout] = system('cat /proc/meminfo | grep MemTotal');
         if status == 0
             totalRAM_bytes = sscanf(cmdout, 'MemTotal: %d kB') * 1024;
         else
-            totalRAM_bytes = 16e9; % valeur par defaut si échec de la détection
+            totalRAM_bytes = 16e9;
         end
     end
 
-    RAM_total_GB   = totalRAM_bytes / 1e9;
-    RAM_max_10pct  = 0.10 * totalRAM_bytes;  % 10% de la RAM physique
+    RAM_total_GB  = totalRAM_bytes / 1e9;
+    RAM_max_10pct = 0.10 * totalRAM_bytes;
 
-    % Choix de la précision 
+    % Précision
     if app.handles.precisionCheck.Value
-       bytes_per_point = 4;
-       prec = 1; 
-       precisionStr = 'SINGLE';
-       matlabType = 'single';
+        bytes_per_point = 4; prec = 1;
+        precisionStr = 'SINGLE';
     else
-       bytes_per_point = 8;
-       prec = 2; 
-       precisionStr = 'DOUBLE';
-       matlabType = 'double';
+        bytes_per_point = 8; prec = 2;
+        precisionStr = 'DOUBLE';
     end
 
-   
-    % Mémoire estimée pour HH_XY + X + Y 
-    mem_needed_bytes = npoints * bytes_per_point + 2 * max(n_x, n_y) * 8;
+    % Vérification mémoire
+    mem_needed_bytes = npoints * bytes_per_point + 2*max(n_x,n_y)*8;
     mem_needed_GB    = mem_needed_bytes / 1e9;
-
-    % Test de dépassement des 10%
     if mem_needed_bytes > RAM_max_10pct
         msg = sprintf(['Insufficient memory!\n\n' ...
-                       'Requested surface: %d × %d = %.2f billion points\n' ...
+                       'Requested surface: %d × %d\n' ...
                        'Precision: %s → %.2f GB required\n' ...
-                       'Total RAM detected: %.1f GB\n' ...
-                       'Allowed limit: 10%% = %.1f GB\n\n'], ...
-                       n_x, n_y, npoints/1e9, precisionStr, mem_needed_GB, ...
+                       'Total RAM: %.1f GB\n' ...
+                       'Limit: 10%% = %.1f GB\n\n'], ...
+                       n_x, n_y, precisionStr, mem_needed_GB, ...
                        RAM_total_GB, RAM_max_10pct/1e9);
-
-    uialert(app.handles.fig, msg, 'Memory limit exceeded', 'Icon', 'warning');
-        %return;
+        uialert(app.handles.fig, msg, 'Memory limit exceeded', 'Icon', 'warning');
     end
 
-    % Si tout est OK, la surface est générée 
-    prec = app.handles.precisionCheck.Value ; 
+    prec = app.handles.precisionCheck.Value;
 
-     
-    % Génération de la surface de mer
+    % ── FLAG DÉBUT ──
+    try
+        fid = fopen('CALC_START.flag', 'w');
+        fprintf(fid, 'start');
+        fclose(fid);
+    catch
+    end
+
+    % ── RAM avant calcul (whos) ──
+    vars_avant  = whos;
+    ram_avant_W = sum([vars_avant.bytes]) / 1024^2;
+
+    % Génération surface
     tic;
-    [HH_XY, X, Y] = f_GeneSurfMer3D_Fetch_Elfo_v3 ( u10_ms , phWind_d , lx_sea_m , ly_sea_m , n_x , n_y , 1 , prec , fetch_m ) ;
+    [HH_XY, X, Y] = f_GeneSurfMer3D_Fetch_Elfo_v3( ...
+        u10_ms, phWind_d, lx_sea_m, ly_sea_m, n_x, n_y, 1, prec, fetch_m);
     temps_gen = toc;
 
+    % ── RAM après calcul (whos) ──
+    vars_apres   = whos;
+    ram_apres_W  = sum([vars_apres.bytes]) / 1024^2;
+    delta_RAM_MB = ram_apres_W - ram_avant_W;
 
-    % Vérification du type de données
-    %actualType = class(HH_XY);
-    bytes_per_el = 8 - 4*isa(HH_XY,'single'); 
+    % Taille surface
+    bytes_per_el = 8 - 4*isa(HH_XY,'single');
     mem_Mo = (numel(HH_XY) + numel(X) + numel(Y)) * bytes_per_el / 1e6;
-    %whos HH_XY
 
+    % Affichage performances
+    fprintf('=== PERFORMANCE GUI Layout Toolbox ===\n');
+    fprintf('Taille             : %d × %d\n',  n_x, n_y);
+    fprintf('Temps              : %.4f s\n',   temps_gen);
+    fprintf('RAM calcul (whos)  : %.2f Mo\n',  delta_RAM_MB);
+    fprintf('RAM avant          : %.2f Mo\n',  ram_avant_W);
+    fprintf('RAM après          : %.2f Mo\n',  ram_apres_W);
+    fprintf('Taille surface     : %.1f Mo\n',  mem_Mo);
+    fprintf('======================================\n');
 
-    fprintf('→ Surface %d×%d générée en %.2f s | Mémoire utilisée (HH+X+Y) ≈ %.1f Mo\n', n_x, n_y, temps_gen, mem_Mo);
-
-    % Statistiques de la surface générée
-    z_min = min(HH_XY(:));
-    z_max = max(HH_XY(:));
+    % Statistiques
+    z_min  = min(HH_XY(:));
+    z_max  = max(HH_XY(:));
     z_mean = mean(HH_XY(:));
-    z_std = std(HH_XY(:));
+    z_std  = std(HH_XY(:));
 
-    app.handles.zMinLabel.Text = sprintf('Zmin: %.4f m', z_min);
-    app.handles.zMaxLabel.Text = sprintf('Zmax: %.4f m', z_max);
-    app.handles.zMeanLabel.Text = sprintf('Zmean:  %.4f m', z_mean);
-    app.handles.zStdLabel.Text   = sprintf('Zstd: %.4f m', z_std);
-
+    app.handles.zMinLabel.Text  = sprintf('Zmin: %.4f m',  z_min);
+    app.handles.zMaxLabel.Text  = sprintf('Zmax: %.4f m',  z_max);
+    app.handles.zMeanLabel.Text = sprintf('Zmean: %.4f m', z_mean);
+    app.handles.zStdLabel.Text  = sprintf('Zstd: %.4f m',  z_std);
 
     % Affichage dans l'axe
-    cla(app.handles.seaSurfaceAx, 'reset'); % Réinitialisation de l'axe
-    pasy = 2; % Pas d'échantillonnage pour Y
-    pasx = 2; % Pas d'échantillonnage pour X
-    surf(app.handles.seaSurfaceAx, Y(1:pasy:end), X(1:pasx:end), HH_XY(1:pasx:end, 1:pasy:end));
-
+    cla(app.handles.seaSurfaceAx, 'reset');
+    pasy = 2; pasx = 2;
+    surf(app.handles.seaSurfaceAx, ...
+        Y(1:pasy:end), X(1:pasx:end), ...
+        HH_XY(1:pasx:end, 1:pasy:end));
     axis(app.handles.seaSurfaceAx, 'equal');
     shading(app.handles.seaSurfaceAx, 'interp');
-    %colorbar(app.handles.seaSurfaceAx);
     xlabel(app.handles.seaSurfaceAx, 'Y (m)');
     ylabel(app.handles.seaSurfaceAx, 'X (m)');
     zlabel(app.handles.seaSurfaceAx, 'Height (m)');
 
-    % Stockage complet de la surface pour l'export ultérieur
+    % Stockage surface
     app.currentSurface = struct(...
-        'HH_XY',    HH_XY, ...
-        'X',        X, ...
-        'Y',        Y, ...
-        'windSpeed', u10_ms, ...
+        'HH_XY',             HH_XY, ...
+        'X',                 X, ...
+        'Y',                 Y, ...
+        'windSpeed',         u10_ms, ...
         'windDirection_deg', phWind_d, ...
-        'fetch_m',  fetch_m, ...
-        'Lx_m',     lx_sea_m, ...
-        'Ly_m',     ly_sea_m, ...
-        'freq_GHz', freq_GHz, ...
-        'nx',       n_x, ...
-        'ny',       n_y, ...
-        'dxy_m',    dxy_m, ...
-        'generated', datestr(now, 'yyyy-mm-dd HH:MM:SS') ...
-    );
+        'fetch_m',           fetch_m, ...
+        'Lx_m',              lx_sea_m, ...
+        'Ly_m',              ly_sea_m, ...
+        'freq_GHz',          freq_GHz, ...
+        'nx',                n_x, ...
+        'ny',                n_y, ...
+        'dxy_m',             dxy_m, ...
+        'generated',         datestr(now, 'yyyy-mm-dd HH:MM:SS'));
 
-    close(d);% Pour la fermeture du message de chargement
-    
-    % Affichage du résultat dans un popup    
-    msgText = sprintf(' Surface %d×%d generated in %.2f s \n Size of the generated surface ≈ %.1f Mo',n_x, n_y, temps_gen, mem_Mo);
-    uialert(app.handles.fig, msgText, 'Generation completed', 'Icon','success');
+    close(d);
 
-    % Message pour confirmer que les données de la surface sont bien stockées
-    %fprintf('Surface stockée dans app.currentSurface, prête à être exportée !\n');
+    % Popup résultat
+    msgText = sprintf('Surface %d×%d generated in %.2f s\nSize ≈ %.1f Mo\nRAM used ≈ %.1f MB', ...
+        n_x, n_y, temps_gen, mem_Mo, delta_RAM_MB);
+    uialert(app.handles.fig, msgText, 'Generation completed', 'Icon', 'success');
+
+    % ── FLAG FIN — après uialert ✅ ──
+    try
+        fid = fopen('CALC_DONE.flag', 'w');
+        fprintf(fid, '%.2f;%.2f;%.2f;%d;%d;%.2f', ...
+            temps_gen, delta_RAM_MB, ram_avant_W, n_x, n_y, mem_Mo);
+        fclose(fid);
+    catch
+    end
 end
+
 
 %% Fonction pour effacer la surface de mer générée et liberer la mémoire
 function clearSeaSurfaceCallback()
