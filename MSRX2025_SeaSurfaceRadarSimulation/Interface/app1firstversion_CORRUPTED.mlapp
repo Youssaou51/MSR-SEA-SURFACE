@@ -1,0 +1,3765 @@
+classdef app1firstversion < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                        matlab.ui.Figure
+        TabGroup                        matlab.ui.container.TabGroup
+        NRCSSimulationTab_2             matlab.ui.container.Tab
+        GridLayout17                    matlab.ui.container.GridLayout
+        GridLayout23                    matlab.ui.container.GridLayout
+        ExportButton_2                  matlab.ui.control.Button
+        ClearButton_2                   matlab.ui.control.Button
+        OverlayButton_2                 matlab.ui.control.Button
+        CalculateButton_2               matlab.ui.control.Button
+        GridLayout19                    matlab.ui.container.GridLayout
+        GridLayout22                    matlab.ui.container.GridLayout
+        ResultsPanel                    matlab.ui.container.Panel
+        NRCS905dBfor300incidenceangleLabel  matlab.ui.control.Label
+        UIAxes3                         matlab.ui.control.UIAxes
+        GridLayout20                    matlab.ui.container.GridLayout
+        ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel  matlab.ui.control.Label
+        Panel_4                         matlab.ui.container.Panel
+        GridLayout21                    matlab.ui.container.GridLayout
+        kokcEditField                   matlab.ui.control.NumericEditField
+        kokcEditFieldLabel              matlab.ui.control.Label
+        FetchmEditField_2               matlab.ui.control.NumericEditField
+        FetchmEditField_2Label          matlab.ui.control.Label
+        ModelDropDown_2                 matlab.ui.control.DropDown
+        ModelDropDown_2Label            matlab.ui.control.Label
+        AnglerelativetowinddirectiondegEditField  matlab.ui.control.NumericEditField
+        AngleRelativetoWinddirectiondegLabel  matlab.ui.control.Label
+        Windspeedu10msEditField         matlab.ui.control.NumericEditField
+        Windspeedu10msEditFieldLabel    matlab.ui.control.Label
+        PolarizationDropDown_2          matlab.ui.control.DropDown
+        PolarizationDropDown_2Label     matlab.ui.control.Label
+        IncidenceangledegEditField      matlab.ui.control.NumericEditField
+        IncidenceAngledegLabel          matlab.ui.control.Label
+        FrequencyGHzEditField           matlab.ui.control.NumericEditField
+        FrequencyGHzEditFieldLabel      matlab.ui.control.Label
+        FrequencybandDropDown           matlab.ui.control.DropDown
+        FrequencybandDropDownLabel      matlab.ui.control.Label
+        InputparametersLabel            matlab.ui.control.Label
+        GridLayout18                    matlab.ui.container.GridLayout
+        Image4                          matlab.ui.control.Image
+        Image3                          matlab.ui.control.Image
+        SeaSurfaceRadarSimulatorLabel_3  matlab.ui.control.Label
+        GenerationofSeaSurfaceTab       matlab.ui.container.Tab
+        GridLayout9                     matlab.ui.container.GridLayout
+        GridLayout11                    matlab.ui.container.GridLayout
+        Panel_3                         matlab.ui.container.Panel
+        GridLayout15                    matlab.ui.container.GridLayout
+        SurfacestatisticsPanel          matlab.ui.container.Panel
+        GridLayout16                    matlab.ui.container.GridLayout
+        Label_4                         matlab.ui.control.Label
+        Label_3                         matlab.ui.control.Label
+        Label_2                         matlab.ui.control.Label
+        ZstdLabel                       matlab.ui.control.Label
+        ZmaxLabel                       matlab.ui.control.Label
+        ZmeanLabel                      matlab.ui.control.Label
+        Label                           matlab.ui.control.Label
+        ZminLabel                       matlab.ui.control.Label
+        UIAxes2                         matlab.ui.control.UIAxes
+        GridLayout12                    matlab.ui.container.GridLayout
+        GridLayout14                    matlab.ui.container.GridLayout
+        ExportSurfaceButton             matlab.ui.control.Button
+        ClearSurfaceButton              matlab.ui.control.Button
+        GenerateSurfaceButton           matlab.ui.control.Button
+        GridLayout13                    matlab.ui.container.GridLayout
+        AngularspectrumDropDown         matlab.ui.control.DropDown
+        AngularspectrumDropDownLabel    matlab.ui.control.Label
+        IsotropicspectrumDropDown       matlab.ui.control.DropDown
+        IsotropicspectrumDropDownLabel  matlab.ui.control.Label
+        RoundlengthLabel_2              matlab.ui.control.Label
+        RoundtotheNearestPowerof2CheckBox_2  matlab.ui.control.CheckBox
+        NumberofsamplesEditField_2      matlab.ui.control.NumericEditField
+        NumberofsamplesEditField_2Label  matlab.ui.control.Label
+        SeasurfaceparametersLabel       matlab.ui.control.Label
+        SamplesperwavelengthEditField   matlab.ui.control.NumericEditField
+        SamplesperwavelengthEditFieldLabel  matlab.ui.control.Label
+        UsesingleprecisionCheckBox      matlab.ui.control.CheckBox
+        PrecisionLabel                  matlab.ui.control.Label
+        RadarfrequencyGHz130GHz2308cmEditField  matlab.ui.control.NumericEditField
+        RadarFrequencyGHz130GHz2308cmLabel  matlab.ui.control.Label
+        LengthYmEditField               matlab.ui.control.NumericEditField
+        LengthYmEditFieldLabel          matlab.ui.control.Label
+        LengthXmEditField               matlab.ui.control.NumericEditField
+        LengthXmEditFieldLabel          matlab.ui.control.Label
+        FetchmEditField                 matlab.ui.control.NumericEditField
+        FetchmEditFieldLabel            matlab.ui.control.Label
+        WinddirectiondegEditField       matlab.ui.control.NumericEditField
+        WinddirectiondegEditFieldLabel  matlab.ui.control.Label
+        Windspeedu10msEditField_2       matlab.ui.control.NumericEditField
+        Windspeedu10msEditField_2Label  matlab.ui.control.Label
+        GridLayout10                    matlab.ui.container.GridLayout
+        GridLayout24                    matlab.ui.container.GridLayout
+        Image6                          matlab.ui.control.Image
+        Image5                          matlab.ui.control.Image
+        SeaProfileRadarSimulatorLabel   matlab.ui.control.Label
+        GenerationofSeaProfilesTab      matlab.ui.container.Tab
+        GridLayout25                    matlab.ui.container.GridLayout
+        GridLayout27                    matlab.ui.container.GridLayout
+        GridLayout30                    matlab.ui.container.GridLayout
+        ProfilestatisticPanel           matlab.ui.container.Panel
+        GridLayout31                    matlab.ui.container.GridLayout
+        Label_8                         matlab.ui.control.Label
+        Label_7                         matlab.ui.control.Label
+        ZstdLabel_2                     matlab.ui.control.Label
+        ZmaxLabel_2                     matlab.ui.control.Label
+        Label_6                         matlab.ui.control.Label
+        Label_5                         matlab.ui.control.Label
+        ZmeanLabel_2                    matlab.ui.control.Label
+        ZminLabel_2                     matlab.ui.control.Label
+        UIAxes4                         matlab.ui.control.UIAxes
+        GridLayout28                    matlab.ui.container.GridLayout
+        GridLayout32                    matlab.ui.container.GridLayout
+        ExportprofilesButton            matlab.ui.control.Button
+        ClearprofilesButton             matlab.ui.control.Button
+        GenerateprofilesButton          matlab.ui.control.Button
+        GridLayout29                    matlab.ui.container.GridLayout
+        IsotropicspectrumDropDown_2     matlab.ui.control.DropDown
+        IsotropicspectrumDropDown_2Label  matlab.ui.control.Label
+        NumberofsamplesEditField        matlab.ui.control.NumericEditField
+        N_smLabel                       matlab.ui.control.Label
+        RoundlengthLabel                matlab.ui.control.Label
+        Roundtothenearestpowerof2CheckBox  matlab.ui.control.CheckBox
+        NprofilesEditField              matlab.ui.control.NumericEditField
+        NprofilesLabel                  matlab.ui.control.Label
+        PrecisionLabel_2                matlab.ui.control.Label
+        UsesingleprecisionCheckBox_2    matlab.ui.control.CheckBox
+        SamplesperwavelengthEditField_2  matlab.ui.control.NumericEditField
+        SamplesperwavelengthEditField_2Label  matlab.ui.control.Label
+        RadarfrequencyGHz130GHz2308cmEditField_2  matlab.ui.control.NumericEditField
+        RadarfrequencyGHz130GHz2308cmLabel  matlab.ui.control.Label
+        LengthmEditField                matlab.ui.control.NumericEditField
+        LengthmEditFieldLabel           matlab.ui.control.Label
+        FetchmEditField_3               matlab.ui.control.NumericEditField
+        FetchmEditField_3Label          matlab.ui.control.Label
+        Windspeedu10msEditField_3       matlab.ui.control.NumericEditField
+        Windspeedu10msEditField_3Label  matlab.ui.control.Label
+        SeaprofileparametersLabel       matlab.ui.control.Label
+        GridLayout26                    matlab.ui.container.GridLayout
+        Image8                          matlab.ui.control.Image
+        Image7                          matlab.ui.control.Image
+        GenerationofSeaProfilesLabel    matlab.ui.control.Label
+        SeaProfileRadarSimulatorTab     matlab.ui.container.Tab
+        GridLayout25_2                  matlab.ui.container.GridLayout
+        GridLayout27_2                  matlab.ui.container.GridLayout
+        GridLayout30_2                  matlab.ui.container.GridLayout
+        UIAxes4_2                       matlab.ui.control.UIAxes
+        GridLayout28_2                  matlab.ui.container.GridLayout
+        GridLayout32_2                  matlab.ui.container.GridLayout
+        ExportprofilesButton_2          matlab.ui.control.Button
+        ClearButton_3                   matlab.ui.control.Button
+        CalculateButton_3               matlab.ui.control.Button
+        GridLayout29_2                  matlab.ui.container.GridLayout
+        NumberofsamplesEditField_3      matlab.ui.control.NumericEditField
+        NumberofsamplesEditField_3Label  matlab.ui.control.Label
+        SamplesperwavelengthEditField_3  matlab.ui.control.NumericEditField
+        SamplesperwavelengthEditField_3Label  matlab.ui.control.Label
+        RadarfrequencyGHz130GHz2308cmEditField_3  matlab.ui.control.NumericEditField
+        RadarfrequencyGHz130GHz2308cmEditField_3Label  matlab.ui.control.Label
+        LengthmEditField_2              matlab.ui.control.NumericEditField
+        LengthmEditField_2Label         matlab.ui.control.Label
+        FetchmEditField_4               matlab.ui.control.NumericEditField
+        FetchmEditField_4Label          matlab.ui.control.Label
+        Windspeedu10msEditField_4       matlab.ui.control.NumericEditField
+        Windspeedu10msEditField_4Label  matlab.ui.control.Label
+        InputparametersLabel_2          matlab.ui.control.Label
+        GridLayout26_2                  matlab.ui.container.GridLayout
+        Image8_2                        matlab.ui.control.Image
+        Image7_2                        matlab.ui.control.Image
+        GenerationofSeaProfilesLabel_2  matlab.ui.control.Label
+    end
+
+    properties (Access = private)
+    SessionData = {}
+    LastSurface  = struct()
+    ProfilesData cell = {}
+    ProfileDropDown   matlab.ui.control.DropDown  % ← AJOUTER
+    ProfileCountLabel matlab.ui.control.Label     % ← AJOUTER
+    RangeStartDropDown  matlab.ui.control.DropDown  % ← AJOUTER
+    RangeEndDropDown    matlab.ui.control.DropDown  % ← AJOUTER
+    UIAxes5 matlab.ui.control.UIAxes 
+    ProfileForNRCS   double = []   % profil sélectionné pour calcul NRCS
+    ProfileXForNRCS  double = []   % abscisses du profil
+    ProfileSelectorDropDown  matlab.ui.control.DropDown
+    IncidenceAngleTab4EditField  matlab.ui.control.NumericEditField
+    PolarizationTab4DropDown     matlab.ui.control.DropDown
+    NRCSAxes matlab.ui.control.UIAxes
+    end
+    
+    methods (Access = private)
+        
+        function results = func(app)
+            
+        end
+
+     function onCurveClick(app, src, evt)
+
+    % Récupérer l'index de la courbe cliquée
+    idx = str2double(src.Tag);
+    if isnan(idx) || idx < 1 || idx > length(app.SessionData)
+        return;
+    end
+
+    entry = app.SessionData{idx};
+
+    % Position du clic
+    clickPos = evt.IntersectionPoint;
+    x_click  = clickPos(1);
+
+    % Valeur NRCS interpolée au point cliqué
+    valid    = ~isnan(entry.Nrcs_dB);
+    y_interp = interp1(entry.Th_i_d(valid), entry.Nrcs_dB(valid), ...
+                       x_click, 'linear', 'extrap');
+
+    % Supprimer ancien tooltip
+    delete(findobj(app.UIAxes3, 'Tag', 'tooltip_box'));
+
+    % ✅ Texte tooltip avec les 7 infos demandées
+    tipText = sprintf(['Incidence Angle (deg): %.1f\n' ...
+                       'NRCS (dB): %.4f\n' ...
+                       'Model: %s\n' ...
+                       'Pol: %s\n' ...
+                       'Freq (GHz): %.2f\n' ...
+                       'Wind (m/s): %.1f\n' ...
+                       'Wind Angle (deg): %.0f'], ...
+        x_click, ...
+        y_interp, ...
+        entry.model, ...
+        entry.pol, ...
+        entry.freq, ...
+        entry.u10, ...
+        entry.windDir);
+
+    % Affichage tooltip sur le graphe
+    text(app.UIAxes3, x_click, y_interp, tipText, ...
+        'Tag',                'tooltip_box', ...
+        'BackgroundColor',    [1 1 0.9], ...
+        'EdgeColor',          [0.3 0.3 0.3], ...
+        'Margin',             6, ...
+        'FontSize',           9, ...
+        'VerticalAlignment',  'bottom', ...
+        'HorizontalAlignment','left', ...
+        'Interpreter',        'none');
+
+    % Mettre à jour Results panel
+    app.NRCS905dBfor300incidenceangleLabel.Text = ...
+        sprintf('NRCS: %.2f dB  (for %.1f° — %s %s)', ...
+        y_interp, x_click, entry.model, entry.pol);
+
+end
+
+        function clearTooltip(app, ~, ~)
+            oldTip = findobj(app.UIAxes3, 'Tag', 'tooltip_box');
+            delete(oldTip);
+        end
+
+        function resizeAll(app)
+    W = app.UIFigure.Position(3);
+    H = app.UIFigure.Position(4);
+
+    % Graphe NRCS — occupe 50% largeur, 60% hauteur
+    app.UIAxes3.Position = [W*0.35, H*0.25, W*0.60, H*0.60];
+
+    % Graphe Surface — même chose onglet 2
+    app.UIAxes2.Position = [W*0.35, H*0.25, W*0.60, H*0.60];
+
+    % Panel Results
+    app.ResultsPanel.Position = [W*0.35, H*0.05, W*0.60, H*0.18];
+
+    % Panel Surface Statistics
+    app.SurfaceStatisticsPanel.Position = [W*0.35, H*0.05, W*0.60, H*0.18];
+        end
+
+
+    function drawProfiles(app, selectedIdx)
+    cla(app.UIAxes4);
+    hold(app.UIAxes4, 'on');
+    grid(app.UIAxes4, 'on');
+    xlabel(app.UIAxes4, 'X (m)');
+    ylabel(app.UIAxes4, 'Z (m)');
+
+    Ntotal = numel(app.ProfilesData);
+    if Ntotal == 0
+        title(app.UIAxes4, ''); hold(app.UIAxes4, 'off'); return;
+    end
+
+    % ── Plage à afficher ──
+    if isfield(app.LastSurface, 'ProfileRange') && ...
+       numel(app.LastSurface.ProfileRange) == 2
+        iStart = app.LastSurface.ProfileRange(1);
+        iEnd   = app.LastSurface.ProfileRange(2);
+    else
+        iStart = 1;
+        iEnd   = min(5, Ntotal);
+    end
+    iStart = max(1, iStart);
+    iEnd   = min(Ntotal, iEnd);
+    indices = iStart:iEnd;
+    Ndisplay = numel(indices);
+
+    colors = lines(Ndisplay);
+    for ki = 1:Ndisplay
+        k = indices(ki);
+        p = app.ProfilesData{k};
+
+        if k == selectedIdx
+            % Profil sélectionné : ligne pleine épaisse
+            ls = '-';
+            lw = 2.5;
+        else
+            % Autres profils : pointillés fins
+            ls = '--';
+            lw = 0.8;
+        end
+
+        plot(app.UIAxes4, p.X, p.H, ...
+            'Color',         colors(ki,:), ...
+            'LineStyle',     ls, ...
+            'LineWidth',     lw, ...
+            'DisplayName',   sprintf('P%d', k), ...
+            'Tag',           num2str(k), ...
+            'ButtonDownFcn', @(~,~) app.onProfileClick(k));
+    end
+
+    legend(app.UIAxes4, 'Location', 'northeast');
+    title(app.UIAxes4, sprintf('Profiles P%d – P%d  |  %d total', ...
+        iStart, iEnd, Ntotal));
+    hold(app.UIAxes4, 'off');
+end
+
+function onProfileClick(app, idx)
+    if idx < 1 || idx > numel(app.ProfilesData)
+        return;
+    end
+
+    H = app.ProfilesData{idx}.H;
+
+    % ── Stats ──
+    app.Label_5.Text = sprintf('%.4f m', min(H));
+    app.Label_7.Text = sprintf('%.4f m', max(H));
+    app.Label_6.Text = sprintf('%.4f m', mean(H));
+    app.Label_8.Text = sprintf('%.4f m', std(H));
+
+    % ── Synchroniser le dropdown Selected Profile ──
+    targetItem = sprintf('P%d', idx);
+    if ismember(targetItem, app.ProfileDropDown.Items)
+        app.ProfileDropDown.Value = targetItem;
+    end
+
+    % ── Vérifier si idx est dans la plage ──
+    if isfield(app.LastSurface, 'ProfileRange') && ...
+       numel(app.LastSurface.ProfileRange) == 2
+        iStart = app.LastSurface.ProfileRange(1);
+        iEnd   = app.LastSurface.ProfileRange(2);
+    else
+        iStart = 1;
+        iEnd   = min(5, numel(app.ProfilesData));
+    end
+
+    % ── Si hors plage → recentrer ──
+    if idx < iStart || idx > iEnd
+        rangeSize = iEnd - iStart;
+        newStart  = max(1, idx - floor(rangeSize/2));
+        newEnd    = min(numel(app.ProfilesData), newStart + rangeSize);
+        app.LastSurface.ProfileRange = [newStart, newEnd];
+        app.fillRangeDropDowns(numel(app.ProfilesData), newStart, newEnd);
+    end
+
+    % ── Surligner ──
+    app.drawProfiles(idx);
+end
+
+function onProfileDropDownChanged(app)
+    val = app.ProfileDropDown.Value;
+
+    if contains(val, '—') || isempty(app.ProfilesData)
+        return;
+    end
+
+    idx = str2double(val(2:end));
+    if isnan(idx) || idx < 1 || idx > numel(app.ProfilesData)
+        return;
+    end
+
+    H = app.ProfilesData{idx}.H;
+
+    % ── Stats ──
+    app.Label_5.Text = sprintf('%.4f m', min(H));
+    app.Label_7.Text = sprintf('%.4f m', max(H));
+    app.Label_6.Text = sprintf('%.4f m', mean(H));
+    app.Label_8.Text = sprintf('%.4f m', std(H));
+
+    % ── Lire la plage actuelle ──
+    if isfield(app.LastSurface, 'ProfileRange') && ...
+       numel(app.LastSurface.ProfileRange) == 2
+        iStart = app.LastSurface.ProfileRange(1);
+        iEnd   = app.LastSurface.ProfileRange(2);
+    else
+        iStart = 1;
+        iEnd   = min(5, numel(app.ProfilesData));
+        app.LastSurface.ProfileRange = [iStart, iEnd];
+    end
+
+    % ── Si hors plage → ajuster ──
+    if idx < iStart || idx > iEnd
+        rangeSize = iEnd - iStart;
+        newStart  = max(1, idx - floor(rangeSize/2));
+        newEnd    = newStart + rangeSize;
+        if newEnd > numel(app.ProfilesData)
+            newEnd   = numel(app.ProfilesData);
+            newStart = max(1, newEnd - rangeSize);
+        end
+        app.LastSurface.ProfileRange = [newStart, newEnd];
+
+        % ── Mettre à jour les dropdowns SANS déclencher le callback ──
+        app.fillRangeDropDowns(numel(app.ProfilesData), newStart, newEnd);
+    end
+
+    app.drawProfiles(idx);
+end
+
+
+function updateNs(app)
+    l_s  = app.LengthmEditField.Value;
+    freq = app.RadarfrequencyGHz130GHz2308cmEditField_2.Value;
+    nlb  = app.SamplesperwavelengthEditField_2.Value;
+
+    if l_s <= 0 || freq <= 0 || nlb < 1
+        app.NumberofsamplesEditField.Value = 0;
+        return;
+    end
+
+    c_ms     = 3e8;
+    lambda_m = c_ms / (freq * 1e9);
+    n_s_raw  = round(l_s / lambda_m) * nlb;
+
+    % ── Arrondir SEULEMENT si la checkbox est cochée ──
+    if app.Roundtothenearestpowerof2CheckBox.Value
+        n_s     = 2^round(log2(max(1, n_s_raw)));
+        l_s_new = n_s * lambda_m / nlb;
+        app.LengthmEditField.Value = l_s_new;
+    else
+        n_s = n_s_raw;   % ← valeur brute sans arrondi
+    end
+
+    app.NumberofsamplesEditField.Value = n_s;
+end
+
+function updateNsSurface(app)
+    lx   = app.LengthXmEditField.Value;
+    ly   = app.LengthYmEditField.Value;
+    freq = app.RadarfrequencyGHz130GHz2308cmEditField.Value;
+    nlb  = app.SamplesperwavelengthEditField.Value;
+
+    if lx <= 0 || ly <= 0 || freq <= 0 || nlb < 1
+        app.NumberofsamplesEditField_2.Value = 0;
+        return;
+    end
+
+    c_ms     = 3e8;
+    lambda_m = c_ms / (freq * 1e9);
+    dxy_m    = lambda_m / nlb;
+    n_x      = round(lx / dxy_m / 2) * 2;
+    n_y      = round(ly / dxy_m / 2) * 2;
+
+    % ── Arrondir SEULEMENT si la checkbox est cochée ──
+    if app.RoundtotheNearestPowerof2CheckBox_2.Value
+        n_x = 2^round(log2(max(1, n_x)));
+        n_y = 2^round(log2(max(1, n_y)));
+        app.LengthXmEditField.Value = n_x * dxy_m;
+        app.LengthYmEditField.Value = n_y * dxy_m;
+    end
+    % ── Pas de nextpow2 automatique ──
+
+    app.NumberofsamplesEditField_2.Value = n_x * n_y;
+end
+
+
+
+function onRangeDropDownChanged(app)
+    if isempty(app.ProfilesData); return; end
+
+    vs = app.RangeStartDropDown.Value;
+    ve = app.RangeEndDropDown.Value;
+
+    if contains(vs,'—') || contains(ve,'—'); return; end
+
+    iStart = str2double(vs);
+    iEnd   = str2double(ve);
+
+    if isnan(iStart) || isnan(iEnd); return; end
+    if iEnd < iStart
+        % Corriger automatiquement
+        iEnd = iStart;
+        app.RangeEndDropDown.ValueChangedFcn = [];
+        app.RangeEndDropDown.Value = num2str(iEnd);
+        app.RangeEndDropDown.ValueChangedFcn = @(~,~) app.onRangeDropDownChanged();
+    end
+
+    % ── Limiter à 5 profils ──
+    if (iEnd - iStart + 1) > 5
+        iEnd = iStart + 4;
+        app.RangeEndDropDown.ValueChangedFcn = [];
+        if ismember(num2str(iEnd), app.RangeEndDropDown.Items)
+            app.RangeEndDropDown.Value = num2str(iEnd);
+        end
+        app.RangeEndDropDown.ValueChangedFcn = @(~,~) app.onRangeDropDownChanged();
+    end
+
+    % ── Stocker et redessiner ──
+    app.LastSurface.ProfileRange = [iStart, iEnd];
+
+    app.Label_5.Text = '—';
+    app.Label_6.Text = '—';
+    app.Label_7.Text = '—';
+    app.Label_8.Text = '—';
+
+    if ismember('— Select a profile —', app.ProfileDropDown.Items)
+        app.ProfileDropDown.Value = '— Select a profile —';
+    end
+
+    app.drawProfiles(-1);
+end
+
+function fillRangeDropDowns(app, Nprof, iStart, iEnd)
+    % Créer les items "1" à "Nprof"
+    items = arrayfun(@(k) num2str(k), 1:Nprof, 'UniformOutput', false);
+
+    % ── Remplir sans déclencher le callback ──
+    app.RangeStartDropDown.ValueChangedFcn = [];
+    app.RangeEndDropDown.ValueChangedFcn   = [];
+
+    app.RangeStartDropDown.Items = items;
+    app.RangeEndDropDown.Items   = items;
+
+    app.RangeStartDropDown.Value = num2str(iStart);
+    app.RangeEndDropDown.Value   = num2str(iEnd);
+
+    app.RangeStartDropDown.ValueChangedFcn = @(~,~) app.onRangeDropDownChanged();
+    app.RangeEndDropDown.ValueChangedFcn   = @(~,~) app.onRangeDropDownChanged();
+end
+
+function updateFreqLabelSurface(app)
+    freq = app.RadarfrequencyGHz130GHz2308cmEditField.Value;
+    if freq <= 0; return; end
+    lambda_cm = (3e8 / (freq * 1e9)) * 100;
+    % ── Label onglet 2 : RadarFrequencyGHz130GHz2308cmLabel ──
+    app.RadarFrequencyGHz130GHz2308cmLabel.Text = ...
+        sprintf('Radar frequency (GHz):\n%.2f GHz → λ = %.2f cm', freq, lambda_cm);
+end
+
+
+function updateFreqLabelProfile(app)
+    freq = app.RadarfrequencyGHz130GHz2308cmEditField_2.Value;
+    if freq <= 0; return; end
+    lambda_cm = (3e8 / (freq * 1e9)) * 100;
+    % ── Label onglet 3 : RadarfrequencyGHz130GHz2308cmLabel ──
+    app.RadarfrequencyGHz130GHz2308cmLabel.Text = ...
+        sprintf('Radar frequency (GHz):\n%.2f GHz → λ = %.2f cm', freq, lambda_cm);
+    % ── Mettre à jour n_s aussi ──
+    app.updateNs();
+end
+
+function updateFreqLabelTab4(app)
+    freq = app.RadarfrequencyGHz130GHz2308cmEditField_3.Value;
+    if freq <= 0; return; end
+    lambda_cm = (3e8 / (freq * 1e9)) * 100;
+    app.RadarfrequencyGHz130GHz2308cmEditField_3Label.Text = ...
+        sprintf('Radar frequency (GHz):\n%.2f GHz → λ = %.2f cm', freq, lambda_cm);
+end
+
+function onSurfaceClick(app, src, evt)
+    if ~isfield(app.LastSurface, 'HH_XY'); return; end
+    clickPos = evt.IntersectionPoint;
+    if isempty(clickPos) || numel(clickPos) < 2; return; end
+
+    HH_XY = app.LastSurface.HH_XY;
+    X     = app.LastSurface.X;
+    Y     = app.LastSurface.Y;
+
+    y_click = clickPos(1);
+    x_click = clickPos(2);
+    [~, iy] = min(abs(Y - y_click));
+    [~, ix] = min(abs(X - x_click));
+    profil_Z = HH_XY(:, iy);
+
+    % ── Layout : profil plus petit (100px au lieu de 150) ──
+    app.UIAxes5.Visible        = 'on';
+    app.GridLayout15.RowHeight = {'1x', 100, 130};
+
+    % ── Tracer le profil — minimal avec info point ──
+    cla(app.UIAxes5);
+    plot(app.UIAxes5, X, profil_Z, ...
+        'Color', [0.1 0.3 0.8], 'LineWidth', 1.0);
+    hold(app.UIAxes5, 'on');
+
+    % ── Point cliqué marqué ──
+    plot(app.UIAxes5, X(ix), profil_Z(ix), ...
+        'ro', 'MarkerSize', 6, 'MarkerFaceColor', 'r');
+
+    % ── Annotation texte discret (pas d'axes) ──
+    text(app.UIAxes5, X(ix), profil_Z(ix), ...
+        sprintf('  Y=%.1fm  Z=%.3fm', Y(iy), profil_Z(ix)), ...
+        'FontSize', 8, 'Color', [0.2 0.2 0.2], ...
+        'VerticalAlignment', 'bottom');
+    hold(app.UIAxes5, 'off');
+
+    % ── Pas d'axes visibles ──
+    app.UIAxes5.XAxis.Visible = 'off';
+    app.UIAxes5.YAxis.Visible = 'off';
+    app.UIAxes5.Box           = 'off';
+    app.UIAxes5.XGrid         = 'off';
+    app.UIAxes5.YGrid         = 'off';
+    title(app.UIAxes5, '');
+
+    % ── Ligne rouge sur la surface ──
+    hold(app.UIAxes2, 'on');
+    delete(findobj(app.UIAxes2, 'Tag', 'profile_line'));
+    zTop = max(HH_XY(:));
+    plot3(app.UIAxes2, Y, repmat(X(ix), size(Y)), ...
+        repmat(zTop * 1.05, size(Y)), ...
+        'r-', 'LineWidth', 2.5, 'Tag', 'profile_line');
+    hold(app.UIAxes2, 'off');
+
+    % ── Reconnecter le callback ──
+    hSurf = findobj(app.UIAxes2, 'Type', 'surface');
+    if ~isempty(hSurf)
+        hSurf(1).ButtonDownFcn = @(s,e) app.onSurfaceClick(s, e);
+        hSurf(1).HitTest       = 'on';
+        hSurf(1).PickableParts = 'all';
+    end
+end
+
+
+function onProfileSelectorChanged(app)
+    val = app.ProfileSelectorDropDown.Value;
+    if isempty(app.ProfilesData) || contains(val, '—'); return; end
+
+    idx = str2double(val(2:end));
+    if isnan(idx) || idx < 1 || idx > numel(app.ProfilesData); return; end
+
+    app.ProfileForNRCS  = app.ProfilesData{idx}.H;
+    app.ProfileXForNRCS = app.ProfilesData{idx}.X;
+
+    % ── Afficher profil dans UIAxes4_2 (ligne 1) ──
+    cla(app.UIAxes4_2);
+    plot(app.UIAxes4_2, app.ProfileXForNRCS, app.ProfileForNRCS, ...
+        'Color', [0.1 0.3 0.8], 'LineWidth', 1.2);
+    grid(app.UIAxes4_2, 'on');
+    xlabel(app.UIAxes4_2, 'X (m)');
+    ylabel(app.UIAxes4_2, 'Z (m)');
+    title(app.UIAxes4_2, sprintf('Profile %s — select then click Calculate', val));
+
+    % ── Effacer le NRCS précédent ──
+    cla(app.NRCSAxes);
+    title(app.NRCSAxes, 'NRCS — click Calculate');
+end
+
+
+
+function plotSpectra(app)
+    u10     = app.Windspeedu10msEditField_2.Value;
+    fetch_m = app.FetchmEditField.Value;
+    isoMdl  = strtrim(app.IsotropicspectrumDropDown.Value);
+    angMdl  = strtrim(app.AngularspectrumDropDown.Value);
+
+    if u10 <= 0 || fetch_m <= 0
+        uialert(app.UIFigure, ...
+            'Please set Wind speed u10 and Fetch first.', ...
+            'Missing parameters', 'Icon', 'warning');
+        return;
+    end
+
+    % ── Vecteur de nombres d'onde ──
+    K = logspace(log10(0.01), log10(1000), 600);  % 0.01 à 1000 rad/m
+
+    % ── Calcul du spectre isotrope ──
+    try
+        switch isoMdl
+            case {'Apel', 'Apel '}
+                Sh_iso = f_SpectrumSea_IsoFetch_Apel(u10, K, fetch_m);
+                isoLabel = 'Apel (1994)';
+
+            case 'Elfouhaily'
+                % Spectre Elfouhaily — recalcul depuis les paramètres
+                g    = 9.81; x0 = 2.2e4; km = 370;
+                k0   = g / u10^2;
+                xmaj = k0 * fetch_m;
+                omgc = 0.84 * tanh((xmaj/x0)^0.4)^(-0.75);
+                kp   = k0 * omgc^2;
+                alphp = 6e-3 * omgc^0.55;
+                if omgc <= 1; gm = 1.7; else; gm = 1.7 + 6*log10(omgc); end
+                sgm  = 0.08 * (1 + 4*omgc^(-3));
+                cp   = sqrt(g*(1+kp^2/km^2)/kp);
+                kk_v = 0.4;
+                z0   = 3.7e-5 * u10^2/g * (u10/cp)^0.9;
+                u_f  = kk_v / log(10/z0) * u10;
+                cm   = sqrt(2*g/km);
+                alphhf = 1.8e-2;
+                L_PM = exp(-5/4*(kp./K).^2);
+                J_p  = gm .^ exp(-(sqrt(K/kp)-1).^2/(2*sgm^2));
+                B_l  = 0.5*alphp * L_PM .* J_p .* sqrt(K/kp);
+                B_h  = alphhf * (1 + 2.5*(K/km).^(5/2)) .* ...
+                       exp(-0.25*(K/km - 1).^2);
+                Sh_iso = (B_l + B_h.*(K > 10*kp)) ./ K.^3;
+                isoLabel = 'Elfouhaily (1997)';
+
+            case {'Donelan', 'Donelan-Pierson'}
+                g    = 9.81; km = 370;
+                k0   = g / u10^2;
+                xmaj = k0 * fetch_m;
+                omgc = 11.6 * xmaj^(-0.23);
+                if omgc < 0.84; omgc = 0.84; end
+                kp   = k0 * omgc^2;
+                cp   = sqrt(g*(1+kp^2/km^2)/kp);
+                kk_v = 0.4;
+                z0   = 3.7e-5 * u10^2/g * (u10/cp)^0.9;
+                u_f  = kk_v / log(10/z0) * u10;
+                Sh_iso = f_SpectrumSea_IsoFetch_DonelanPierson(u10, K, fetch_m, u_f);
+                isoLabel = 'Donelan-Pierson (1987)';
+
+            otherwise
+                return;
+        end
+
+        % ── Calcul du spectre angulaire à Phi_d = 0° ──
+        Phi_d = 0;
+        switch angMdl
+            case 'Elfouhaily'
+                [Phi_spr, ~] = f_SpectrumSea_AngFetch_ElfouhailyDu( ...
+                    u10, Phi_d, K, fetch_m, [], 'El');
+                angLabel = 'Elfouhaily (1997)';
+
+            case 'Du'
+                [Phi_spr, ~] = f_SpectrumSea_AngFetch_ElfouhailyDu( ...
+                    u10, Phi_d, K, fetch_m, [], 'Du');
+                angLabel = 'Du (2017)';
+
+            case 'Donelan'
+                [Phi_spr, ~, ~] = f_SpectrumSea_AngFetch_DonelanBannerMD( ...
+                    u10, Phi_d, K, fetch_m, 'Don');
+                angLabel = 'Donelan (1985)';
+
+            case 'Banner'
+                [Phi_spr, ~, ~] = f_SpectrumSea_AngFetch_DonelanBannerMD( ...
+                    u10, Phi_d, K, fetch_m, 'Ban');
+                angLabel = 'Banner (1990)';
+
+            case 'McDaniel'
+                [Phi_spr, ~, ~] = f_SpectrumSea_AngFetch_DonelanBannerMD( ...
+                    u10, Phi_d, K, fetch_m, 'McD');
+                angLabel = 'McDaniel (2001)';
+
+            otherwise
+                Phi_spr  = ones(size(K)) / (2*pi);
+                angLabel = 'Flat';
+        end
+
+        % ── Spectre directionnel ──
+        Sh_dir = Sh_iso .* Phi_spr;
+
+    catch ME
+        uialert(app.UIFigure, ...
+            ['Spectrum error: ' ME.message], ...
+            'Spectrum error', 'Icon', 'warning');
+        return;
+    end
+
+    % ── Affichage dans une figure MATLAB externe ──
+    fig = findobj('Tag', 'SpectraFig');
+    if isempty(fig)
+        fig = figure('Tag', 'SpectraFig', 'Name', 'Sea Surface Spectra', ...
+                     'Position', [200 200 900 500]);
+    else
+        clf(fig);
+    end
+
+    % ── Subplot 1 : Spectre isotrope ──
+    ax1 = subplot(1, 2, 1, 'Parent', fig);
+    loglog(ax1, K, Sh_iso, 'b-', 'LineWidth', 2);
+    grid(ax1, 'on');
+    xlabel(ax1, 'K (rad/m)');
+    ylabel(ax1, 'S_h^{iso} (m^3/rad)');
+    title(ax1, sprintf('Isotropic spectrum\n%s\nu_{10}=%.1f m/s | fetch=%.0e m', ...
+        isoLabel, u10, fetch_m));
+    set(ax1, 'FontSize', 10);
+    xlim(ax1, [min(K) max(K)]);
+
+    % ── Subplot 2 : Spectre angulaire ──
+    ax2 = subplot(1, 2, 2, 'Parent', fig);
+    semilogx(ax2, K, Phi_spr, 'r-', 'LineWidth', 2);
+    hold(ax2, 'on');
+    semilogx(ax2, K, Sh_dir / max(Sh_dir), 'k--', 'LineWidth', 1.5, ...
+             'DisplayName', 'Directional (normalized)');
+    hold(ax2, 'off');
+    grid(ax2, 'on');
+    xlabel(ax2, 'K (rad/m)');
+    ylabel(ax2, '\Phi_{spr} (1/rad)');
+    title(ax2, sprintf('Angular spreading function\n%s\n\\phi_d=0° (upwind)', angLabel));
+    legend(ax2, {['Φ_{spr} — ' angLabel], 'S_{dir} (norm.)'}, ...
+           'Location', 'northeast', 'FontSize', 8);
+    set(ax2, 'FontSize', 10);
+    xlim(ax2, [min(K) max(K)]);
+
+    sgtitle(fig, sprintf('Sea Surface Height Spectrum  —  u_{10} = %.1f m/s  |  fetch = %.0e m', ...
+            u10, fetch_m), 'FontSize', 12, 'FontWeight', 'bold');
+end
+
+
+function plotSpectraProfile(app)
+    u10     = app.Windspeedu10msEditField_3.Value;
+    fetch_m = app.FetchmEditField_3.Value;
+    isoMdl  = strtrim(app.IsotropicspectrumDropDown_2.Value);
+
+    if u10 <= 0 || fetch_m <= 0
+        uialert(app.UIFigure, ...
+            'Please set Wind speed u10 and Fetch first.', ...
+            'Missing parameters', 'Icon', 'warning');
+        return;
+    end
+
+    K = logspace(log10(0.01), log10(1000), 600);
+
+    try
+        switch isoMdl
+            case {'Apel', 'Apel '}
+                Sh_iso = f_SpectrumSea_IsoFetch_Apel(u10, K, fetch_m);
+                isoLabel = 'Apel (1994)';
+
+            case 'Elfouhaily'
+                g    = 9.81; x0 = 2.2e4; km = 370;
+                k0   = g / u10^2;
+                xmaj = k0 * fetch_m;
+                omgc = 0.84 * tanh((xmaj/x0)^0.4)^(-0.75);
+                kp   = k0 * omgc^2;
+                alphp = 6e-3 * omgc^0.55;
+                if omgc <= 1; gm = 1.7; else; gm = 1.7 + 6*log10(omgc); end
+                sgm  = 0.08 * (1 + 4*omgc^(-3));
+                L_PM = exp(-5/4*(kp./K).^2);
+                J_p  = gm .^ exp(-(sqrt(K/kp)-1).^2/(2*sgm^2));
+                B_l  = 0.5*alphp * L_PM .* J_p .* sqrt(K/kp);
+                alphhf = 1.8e-2;
+                km   = 370;
+                B_h  = alphhf * (1 + 2.5*(K/km).^(5/2)) .* ...
+                       exp(-0.25*(K/km - 1).^2);
+                Sh_iso = (B_l + B_h.*(K > 10*kp)) ./ K.^3;
+                isoLabel = 'Elfouhaily (1997)';
+
+            case {'Donelan', 'Donelan-Pierson'}
+                g    = 9.81; km = 370;
+                k0   = g / u10^2;
+                xmaj = k0 * fetch_m;
+                omgc = 11.6 * xmaj^(-0.23);
+                if omgc < 0.84; omgc = 0.84; end
+                kp   = k0 * omgc^2;
+                cp   = sqrt(g*(1+kp^2/km^2)/kp);
+                kk_v = 0.4;
+                z0   = 3.7e-5 * u10^2/g * (u10/cp)^0.9;
+                u_f  = kk_v / log(10/z0) * u10;
+                Sh_iso = f_SpectrumSea_IsoFetch_DonelanPierson(u10, K, fetch_m, u_f);
+                isoLabel = 'Donelan-Pierson (1987)';
+
+            otherwise
+                return;
+        end
+
+    catch ME
+        uialert(app.UIFigure, ...
+            ['Spectrum error: ' ME.message], 'Spectrum error', 'Icon', 'warning');
+        return;
+    end
+
+    % ── Affichage figure externe ──
+    fig = findobj('Tag', 'SpectraFig3');
+    if isempty(fig)
+        fig = figure('Tag', 'SpectraFig3', 'Name', 'Isotropic Spectrum — Profiles', ...
+                     'Position', [200 200 600 450]);
+    else
+        clf(fig);
+    end
+
+    ax = axes('Parent', fig);
+    loglog(ax, K, Sh_iso, 'b-', 'LineWidth', 2.5);
+    grid(ax, 'on');
+    xlabel(ax, 'K (rad/m)', 'FontSize', 11);
+    ylabel(ax, 'S_h^{iso} (m^3/rad)', 'FontSize', 11);
+    title(ax, sprintf('Isotropic Spectrum — %s\nu_{10} = %.1f m/s  |  fetch = %.0e m', ...
+        isoLabel, u10, fetch_m), 'FontSize', 12, 'FontWeight', 'bold');
+    set(ax, 'FontSize', 10);
+    xlim(ax, [min(K) max(K)]);
+end
+
+    end
+
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Code that executes after component creation
+        function startupFcn(app)
+
+     % ── Démarrer le pool parallèle si disponible ──
+try
+    if isempty(gcp('nocreate'))
+        parpool('local');  % ou parpool('local', 4) pour 4 workers
+    end
+catch
+    % Parallel Computing Toolbox non disponible — mode séquentiel
+end
+ 
+    app.SessionData = {};
+    app.UIAxes2.Box   = 'off';
+    app.UIAxes2.Color = 'none';
+    app.UIAxes2.ZColor = 'none';
+    
+
+    % ── Responsive layouts ──
+    app.GridLayout19.ColumnWidth = {'1x', '1.8x'};
+    app.GridLayout21.ColumnWidth = {'1x', '1.2x'};
+    app.GridLayout11.ColumnWidth = {'1x', '1.8x'};
+    app.GridLayout13.ColumnWidth = {'1x', '1.2x'};
+    app.GridLayout16.ColumnWidth = {'1x', '2x', '1x', '2x'};
+
+    % ── Label NRCS ──
+    app.NRCS905dBfor300incidenceangleLabel.Position = [10 5 500 60];
+
+    FrequencybandDropDownValueChanged(app, []);
+
+    % ── Valeurs par défaut onglet 3 ──
+    app.Windspeedu10msEditField_3.Value               = 10;
+    app.FetchmEditField_3.Value                       = 500000;
+    app.LengthmEditField.Value                        = 500;
+    app.RadarfrequencyGHz130GHz2308cmEditField_2.Value = 1.30;
+    app.SamplesperwavelengthEditField_2.Value          = 8;
+    app.NprofilesEditField.Value                       = 5;
+    app.UsesingleprecisionCheckBox_2.Value                                 = false;
+
+    % ── Connecter les boutons onglet 3 ──
+    app.GenerateprofilesButton.ButtonPushedFcn = @(~,~) GenerateprofilesButtonPushed(app, []);
+    app.ClearprofilesButton.ButtonPushedFcn    = @(~,~) ClearprofilesButtonPushed(app, []);
+    app.ExportprofilesButton.ButtonPushedFcn   = @(~,~) ExportprofilesButtonPushed(app, []);
+
+  % ════════════════════════════════════════════════
+%  MODIFICATION GRIDLAYOUT30 : 3 lignes
+%  Ligne 1 : UIAxes4  (graphe des 5 profils)
+%  Ligne 2 : barre dropdown  (40px)
+%  Ligne 3 : ProfilestatisticPanel  (130px)
+% ════════════════════════════════════════════════
+% ════════════════════════════════════════════════
+app.GridLayout30.RowHeight = {'1x', 40, 130};
+app.UIAxes4.HitTest       = 'on';
+app.UIAxes4.PickableParts = 'all';
+app.ProfilestatisticPanel.Layout.Row = 3;
+
+% ── Créer la grille de la ligne 2 ──
+dropGrid = uigridlayout(app.GridLayout30);
+dropGrid.ColumnWidth   = {'1x', 80, 25, 80, 30, '1x', 160};
+dropGrid.RowHeight     = {'1x'};
+dropGrid.Padding       = [8 4 8 4];
+dropGrid.ColumnSpacing = 4;
+dropGrid.Layout.Row    = 2;
+dropGrid.Layout.Column = 1;
+dropGrid.BackgroundColor = [0.94 0.94 0.94];
+
+% ── Col 1 : Label "Profile range:" ──
+rangeLabel = uilabel(dropGrid);
+rangeLabel.Text                = 'Profile range:';
+rangeLabel.FontWeight          = 'bold';
+rangeLabel.FontSize            = 11;
+rangeLabel.HorizontalAlignment = 'right';
+rangeLabel.Layout.Row          = 1;
+rangeLabel.Layout.Column       = 1;
+
+% ── Col 2 : Dropdown borne début ──
+app.RangeStartDropDown = uidropdown(dropGrid);
+app.RangeStartDropDown.Items           = {'—'};
+app.RangeStartDropDown.Value           = '—';
+app.RangeStartDropDown.Layout.Row      = 1;
+app.RangeStartDropDown.Layout.Column   = 2;
+app.RangeStartDropDown.ValueChangedFcn = @(~,~) app.onRangeDropDownChanged();
+
+% ── Col 3 : Tiret séparateur ──
+dashLabel = uilabel(dropGrid);
+dashLabel.Text                = '—';
+dashLabel.HorizontalAlignment = 'center';
+dashLabel.FontSize            = 14;
+dashLabel.FontWeight          = 'bold';
+dashLabel.Layout.Row          = 1;
+dashLabel.Layout.Column       = 3;
+
+% ── Col 4 : Dropdown borne fin ──
+app.RangeEndDropDown = uidropdown(dropGrid);
+app.RangeEndDropDown.Items           = {'—'};
+app.RangeEndDropDown.Value           = '—';
+app.RangeEndDropDown.Layout.Row      = 1;
+app.RangeEndDropDown.Layout.Column   = 4;
+app.RangeEndDropDown.ValueChangedFcn = @(~,~) app.onRangeDropDownChanged();
+
+% ── Col 5 : espace ──
+sp = uilabel(dropGrid);
+sp.Text = ''; sp.Layout.Row = 1; sp.Layout.Column = 5;
+
+% ── Col 6 : Label "Selected Profile:" ──
+selLabel = uilabel(dropGrid);
+selLabel.Text                = 'Selected Profile:';
+selLabel.FontWeight          = 'bold';
+selLabel.FontSize            = 11;
+selLabel.HorizontalAlignment = 'right';
+selLabel.Layout.Row          = 1;
+selLabel.Layout.Column       = 6;
+
+% ── Col 7 : Dropdown Selected Profile ──
+app.ProfileDropDown = uidropdown(dropGrid);
+app.ProfileDropDown.Items           = {'— Generate first —'};
+app.ProfileDropDown.Value           = '— Generate first —';
+app.ProfileDropDown.Layout.Row      = 1;
+app.ProfileDropDown.Layout.Column   = 7;
+app.ProfileDropDown.ValueChangedFcn = @(~,~) app.onProfileDropDownChanged();
+
+% ── Compteur (invisible, gardé pour compatibilité) ──
+app.ProfileCountLabel = uilabel(dropGrid);
+app.ProfileCountLabel.Text    = '';
+app.ProfileCountLabel.Visible = 'off';
+app.ProfileCountLabel.Layout.Row    = 1;
+app.ProfileCountLabel.Layout.Column = 5;
+
+% ── Titre et layout du panel stats ──
+app.ProfilestatisticPanel.Title = 'Profile Statistics';
+app.GridLayout31.ColumnWidth    = {70, '1x', 70, '1x'};
+app.GridLayout31.RowHeight      = {'1x', '1x'};
+app.GridLayout31.Padding        = [10 8 10 8];
+
+% ── Responsive ──
+app.GridLayout27.ColumnWidth = {'1x', '1.8x'};
+app.GridLayout29.ColumnWidth = {'1x', '1.2x'};
+
+% ── Connecter les champs n_s ──
+app.LengthmEditField.ValueChangedFcn = @(~,~) app.updateNs();
+app.SamplesperwavelengthEditField_2.ValueChangedFcn = @(~,~) app.updateNs();
+% ── Onglet 3 : fréquence → label + n_s ──
+app.RadarfrequencyGHz130GHz2308cmEditField_2.ValueChangedFcn = ...
+    @(~,~) app.updateFreqLabelProfile();
+app.updateFreqLabelProfile();
+
+% ── Onglet 2 : fréquence → label ──
+app.RadarfrequencyGHz130GHz2308cmEditField.ValueChangedFcn = ...
+    @(~,~) app.updateFreqLabelSurface();
+app.updateFreqLabelSurface();
+app.Roundtothenearestpowerof2CheckBox.ValueChangedFcn = @(~,~) app.updateNs();
+app.updateNs();
+
+% ── Connecter les champs onglet 2 pour mise à jour automatique de n_s ──
+app.LengthXmEditField.ValueChangedFcn = @(~,~) app.updateNsSurface();
+app.LengthYmEditField.ValueChangedFcn = @(~,~) app.updateNsSurface();
+app.RadarfrequencyGHz130GHz2308cmEditField.ValueChangedFcn = @(~,~) app.updateNsSurface();
+app.SamplesperwavelengthEditField.ValueChangedFcn = @(~,~) app.updateNsSurface();
+app.RoundtotheNearestPowerof2CheckBox_2.ValueChangedFcn = @(~,~) app.updateNsSurface();
+
+% ── Calculer n_s initial ──
+app.updateNsSurface();
+
+% ── Number of samples — lecture seule ──
+app.NumberofsamplesEditField.Editable = 'off';
+app.NumberofsamplesEditField_2.Editable = 'off';
+
+% ── Corriger le layout AVANT de créer UIAxes5 ──
+% GridLayout15 doit avoir 3 lignes : graphe | profil(caché) | stats
+app.GridLayout15.RowHeight = {'1x', 0, 130};
+
+% ── Déplacer SurfacestatisticsPanel à la ligne 3 ──
+app.SurfacestatisticsPanel.Layout.Row = 3;
+
+% ── UIAxes5 pour profil — ligne 2, caché au départ ──
+app.UIAxes5 = uiaxes(app.GridLayout15);
+app.UIAxes5.Layout.Row    = 2;
+app.UIAxes5.Layout.Column = 1;
+app.UIAxes5.Visible       = 'off';
+xlabel(app.UIAxes5, 'X (m)');
+ylabel(app.UIAxes5, 'Z (m)');
+app.UIAxes5.XGrid = 'on';
+app.UIAxes5.YGrid = 'on';
+app.UIAxes5.FontSize = 9;
+
+% ── Connecter le clic sur la surface ──
+app.UIAxes2.ButtonDownFcn = @(src,evt) app.onSurfaceClick(src, evt);
+app.UIAxes2.HitTest       = 'on';
+app.UIAxes2.PickableParts = 'all';
+
+
+% ── Onglet 4 : Sea Profile Radar Simulator ──
+
+% Champs lecture seule (copiés depuis onglet 3)
+app.Windspeedu10msEditField_4.Editable   = 'off';
+app.FetchmEditField_4.Editable           = 'off';
+app.LengthmEditField_2.Editable          = 'off';
+app.RadarfrequencyGHz130GHz2308cmEditField_3.Editable = 'off';
+app.SamplesperwavelengthEditField_3.Editable = 'off';
+app.NumberofsamplesEditField_3.Editable  = 'off';
+
+% ── Label fréquence dynamique onglet 4 ──
+app.RadarfrequencyGHz130GHz2308cmEditField_3.ValueChangedFcn = ...
+    @(~,~) app.updateFreqLabelTab4();
+
+% Valeurs initiales par défaut (seront remplacées)
+app.Windspeedu10msEditField_4.Value   = 0;
+app.FetchmEditField_4.Value           = 0;
+app.LengthmEditField_2.Value          = 0;
+app.RadarfrequencyGHz130GHz2308cmEditField_3.Value = 0;
+app.SamplesperwavelengthEditField_3.Value = 0;
+app.NumberofsamplesEditField_3.Value  = 0;
+
+% ── Connecter le bouton Generate onglet 4 ──
+app.CalculateButton_3.ButtonPushedFcn = ...
+    @(~,~) app.CalculateButton_3Pushed([]);
+app.ClearButton_3.ButtonPushedFcn = ...
+    @(~,~) app.ClearButton_3Pushed([]);
+
+% ── Créer un dropdown pour choisir le profil ──
+% Ajouter une ligne au GridLayout29_2 pour le dropdown
+app.GridLayout29_2.RowHeight = {29, 29, 29, 29, 29, 29, 29, 29};
+
+% Label
+lblProfile = uilabel(app.GridLayout29_2);
+lblProfile.Text                = 'Select profile:';
+lblProfile.HorizontalAlignment = 'center';
+lblProfile.Layout.Row          = 8;
+lblProfile.Layout.Column       = 1;
+
+% Dropdown
+app.ProfileSelectorDropDown = uidropdown(app.GridLayout29_2);
+app.ProfileSelectorDropDown.Items = {'— Generate profiles first —'};
+app.ProfileSelectorDropDown.Value = '— Generate profiles first —';
+app.ProfileSelectorDropDown.Layout.Row    = 8;
+app.ProfileSelectorDropDown.Layout.Column = 2;
+app.ProfileSelectorDropDown.ValueChangedFcn = ...
+    @(~,~) app.onProfileSelectorChanged();
+
+% ── Ajouter ligne pour angle d'incidence dans GridLayout29_2 ──
+app.GridLayout29_2.RowHeight = {29, 29, 29, 29, 29, 29, 29, 29, 29};
+
+% Label incidence angle
+lblInc = uilabel(app.GridLayout29_2);
+lblInc.Text                = 'Incidence angle (deg):';
+lblInc.HorizontalAlignment = 'center';
+lblInc.Layout.Row          = 9;
+lblInc.Layout.Column       = 1;
+
+% Champ incidence angle (modifiable par le user)
+app.IncidenceAngleTab4EditField = uieditfield(app.GridLayout29_2, 'numeric');
+app.IncidenceAngleTab4EditField.Value  = 30;
+app.IncidenceAngleTab4EditField.Limits = [0 89];
+app.IncidenceAngleTab4EditField.Layout.Row    = 9;
+app.IncidenceAngleTab4EditField.Layout.Column = 2;
+
+% Label polarisation
+lblPol = uilabel(app.GridLayout29_2);
+lblPol.Text                = 'Polarization:';
+lblPol.HorizontalAlignment = 'center';
+lblPol.Layout.Row          = 10;
+lblPol.Layout.Column       = 1;
+
+% Dropdown polarisation
+app.PolarizationTab4DropDown = uidropdown(app.GridLayout29_2);
+app.PolarizationTab4DropDown.Items  = {'TE', 'TM'};
+app.PolarizationTab4DropDown.Value  = 'TE';
+app.PolarizationTab4DropDown.Layout.Row    = 10;
+app.PolarizationTab4DropDown.Layout.Column = 2;
+
+% ── Diviser UIAxes4_2 en 2 zones : profil (haut) + NRCS (bas) ──
+app.GridLayout30_2.RowHeight = {'1x', '1x'};
+
+% ── UIAxes pour le profil (ligne 1) ──
+% UIAxes4_2 reste en ligne 1 → profil du sea surface
+app.UIAxes4_2.Layout.Row = 1;
+
+% ── Créer UIAxes pour le NRCS (ligne 2) ──
+app.NRCSAxes = uiaxes(app.GridLayout30_2);
+app.NRCSAxes.Layout.Row    = 2;
+app.NRCSAxes.Layout.Column = 1;
+xlabel(app.NRCSAxes, 'Scattering angle θ_{sca} (deg)');
+ylabel(app.NRCSAxes, 'NRCS (dB)');
+app.NRCSAxes.XGrid = 'on';
+app.NRCSAxes.YGrid = 'on';
+
+% ── Onglet 2 : dropdowns spectre → affichage graphique ──
+app.IsotropicspectrumDropDown.ValueChangedFcn  = @(~,~) app.plotSpectra();
+app.AngularspectrumDropDown.ValueChangedFcn    = @(~,~) app.plotSpectra();
+
+% ── Onglet 3 : dropdown spectre profil ──
+app.IsotropicspectrumDropDown_2.ValueChangedFcn = @(~,~) app.plotSpectraProfile();
+
+       
+        end
+
+        % Button pushed function: CalculateButton_2
+        function CalculateButton_2Pushed(app, event)
+    % --- Lecture des paramètres interface ---
+    u10     = app.Windspeedu10msEditField.Value;
+    windDir = app.AnglerelativetowinddirectiondegEditField.Value;
+    pol     = app.PolarizationDropDown_2.Value;
+    model   = app.ModelDropDown_2.Value;
+    freq    = app.FrequencyGHzEditField.Value;
+    th_user = app.IncidenceangledegEditField.Value;
+
+    % --- Initialisation ---
+    Nrcs_VV = [];
+    Nrcs_HH = [];
+    Nrcs_VH = [];
+    Th_i_d  = [];
+
+    try
+        switch model
+
+    % ── L-BAND ──────────────────────────────────────
+    case 'Isoguchi'
+        Th_i_d = (17:0.5:43)';      
+        [Nrcs_VV, Nrcs_HH] = ...
+            f_Nrcs_3dMono_EmpExpSea_Lband_Isoguchi(Th_i_d, u10, windDir);
+        Nrcs_VH = NaN(size(Th_i_d));
+
+    case 'Meissner'
+        Th_i_d = (24.36:0.5:49.29)'; 
+        [Nrcs_VV, Nrcs_HH, Nrcs_VH] = ...
+            f_Nrcs_3dMono_EmpExpSea_Lband_Meissner_v2(Th_i_d, u10, windDir, 'linear');
+
+    % ── C-BAND ──────────────────────────────────────
+            case 'Quilfen'
+    if u10 > 19.9
+        uialert(app.UIFigure, 'Quilfen : u10 doit être < 20 m/s', ...
+            'Paramètre invalide', 'Icon', 'warning');
+        return;
+    end
+    Th_i_d = (18:0.5:60);      % ← SANS '
+    [Nrcs_VV, Nrcs_HH] = ...
+        f_Nrcs_3dMono_EmpExpSea_Cband_Quilfen(Th_i_d, u10, windDir);
+    Nrcs_VV = Nrcs_VV(:);
+    Nrcs_HH = Nrcs_HH(:);
+    Th_i_d  = Th_i_d(:);       % ← remet en colonne
+    Nrcs_VH = NaN(size(Th_i_d));
+
+            case 'CMOD2-I3'
+    Th_i_d = (18:0.5:57);      % ← SANS ' (vecteur ligne 1×79)
+    [Nrcs_VV, Nrcs_HH] = ...
+        f_Nrcs_3dMono_EmpExpSea_Cband_Cmod2I3(Th_i_d, u10, windDir);
+    Nrcs_VV = Nrcs_VV(:);      % ← remet en colonne après
+    Nrcs_HH = Nrcs_HH(:);
+    Th_i_d  = Th_i_d(:);       % ← remet Th_i_d en colonne aussi
+    Nrcs_VH = NaN(size(Th_i_d));
+
+case 'CMOD5'
+    Th_i_d = (18:0.5:57)';
+    [Nrcs_VV, Nrcs_HH] = ...
+        f_Nrcs_3dMono_EmpExpSea_Cband_Cmod5(Th_i_d, u10, windDir);
+    Nrcs_VV = Nrcs_VV(:);
+    Nrcs_HH = Nrcs_HH(:);
+    Nrcs_VH = NaN(size(Th_i_d));
+
+case 'CMOD5N'
+    Th_i_d = (18:0.5:57)';
+    [Nrcs_VV, Nrcs_HH] = ...
+        f_Nrcs_3dMono_EmpExpSea_Cband_Cmod5N(Th_i_d, u10, windDir);
+    Nrcs_VV = Nrcs_VV(:);
+    Nrcs_HH = Nrcs_HH(:);
+    Nrcs_VH = NaN(size(Th_i_d));
+
+case 'XMOD1R'
+    Th_i_d = (20:0.5:60)';
+    [Nrcs_VV, Nrcs_HH] = ...
+        f_Nrcs_3dMono_EmpExpSea_Xband_Xmod1R(Th_i_d, u10, windDir);
+    Nrcs_VV = Nrcs_VV(:);
+    Nrcs_HH = Nrcs_HH(:);
+    Nrcs_VH = NaN(size(Th_i_d));
+
+case 'XMOD2N'
+    Th_i_d = (18:0.5:46)';
+    [Nrcs_VV, Nrcs_HH] = ...
+        f_Nrcs_3dMono_EmpExpSea_Xband_Xmod2N(Th_i_d, u10, windDir);
+    Nrcs_VV = Nrcs_VV(:);
+    Nrcs_HH = Nrcs_HH(:);
+    Nrcs_VH = NaN(size(Th_i_d));
+
+
+% ── MODÈLES RASANCE ─────────────────────────────
+    case {'NRL','TSC','GIT','HYBRID','RRE','SITTROP'}
+        c_ms    = 3e8;
+        lambda_m = c_ms / (freq * 1e9);
+
+        % Conversion u10 → état de mer
+        seaState = round((u10 / 3.16)^1.25);
+        seaState = max(0, min(7, seaState));
+
+        % Validation u10 selon modèle
+        switch model
+            case 'NRL'
+                if u10 > 13.2; u10 = 13.2; seaState = 6; end
+                Chi_d  = (0.1:0.5:60)';
+            case 'TSC'
+                if u10 > 11.4; u10 = 11.4; seaState = 5; end
+                Chi_d  = (0.1:0.5:89.9)';
+            case 'GIT'
+                u10 = max(3.2, min(13.2, u10));
+                seaState = max(1, min(6, round((u10/3.16)^1.25)));
+                Chi_d  = (0.1:0.5:9.9)';
+            case 'HYBRID'
+                if u10 > 11.4; u10 = 11.4; seaState = 5; end
+                Chi_d  = (0:0.5:30)';
+            case 'RRE'
+                u10 = max(3.2, min(13.2, u10));
+                seaState = max(1, min(6, round((u10/3.16)^1.25)));
+                Chi_d  = (0.1:0.5:9.9)';
+            case 'SITTROP'
+                if u10 > 14.9; u10 = 14.9; end
+                Chi_d  = (0.2:0.1:9.8)';
+        end
+
+        Th_i_d = 90 - Chi_d;
+
+        % Polarisation : 'V' ou 'H'
+        if strcmp(pol,'VV'); polModel = 'V'; else; polModel = 'H'; end
+
+        switch model
+            case 'NRL'
+                Nrcs_dB_raw = f_Nrcs_3dMonoGrazing_NRL_2012(...
+                    Chi_d, lambda_m, seaState, windDir, polModel, c_ms);
+            case 'TSC'
+                Nrcs_dB_raw = f_Nrcs_3dMonoGrazing_TSC(...
+                    Chi_d, lambda_m, seaState, windDir, polModel);
+            case 'GIT'
+                Nrcs_dB_raw = f_Nrcs_3dMonoGrazing_GIT(...
+                    Chi_d, lambda_m, seaState, windDir, polModel);
+            case 'HYBRID'
+                Nrcs_dB_raw = f_Nrcs_3dMonoGrazing_HYB2(...
+                    Chi_d, lambda_m, seaState, windDir, polModel);
+            case 'RRE'
+                Nrcs_dB_raw = f_Nrcs_3dMonoGrazing_RRE(...
+                    Chi_d, lambda_m, seaState, windDir, polModel);
+            case 'SITTROP'
+                Nrcs_dB_raw = f_Nrcs_3dMonoGrazing_SIT(...
+                    Chi_d, lambda_m, seaState, windDir, polModel);
+        end
+
+        % Ces modèles retournent déjà en dB → convertir en linéaire
+        Nrcs_dB_raw = Nrcs_dB_raw(:);
+        Nrcs_VV = 10.^(Nrcs_dB_raw/10);
+        Nrcs_HH = Nrcs_VV;
+        Nrcs_VH = NaN(size(Th_i_d));
+
+    % ── MODÈLES PHYSIQUES ───────────────────────────
+    case {'TSM','GO1sh','SPM1'}
+        sst_C   = 15;
+        sss_ppt = 35;
+        F_Hz    = freq * 1e9;
+        fetch_m = app.FetchmEditField_2.Value;
+        if fetch_m <= 0; fetch_m = 500000; end
+        k0SurKc = app.kokcEditField.Value;
+        if k0SurKc <= 0; k0SurKc = 4; end
+
+        [er2, ~, K_EM, Kc] = f_Sea_ErOmg(...
+            F_Hz, sst_C, sss_ppt, u10, fetch_m, k0SurKc);
+
+        switch model
+            case 'TSM'
+         Th_i_d = (0.1:0.5:80)';
+        [Nrcs_VV_raw, Nrcs_HH_raw, Nrcs_VH_raw, ~, ~, AddVV, AddHH] = ...
+        f_Nrcs_3dMono_StatisticSea_TSM_Elfo_Gauss_Fetch_v2(...
+        Th_i_d, windDir, er2, u10, fetch_m, K_EM, Kc);
+
+         Nrcs_VV = Nrcs_VV_raw(:) + AddVV(:);
+         Nrcs_HH = Nrcs_HH_raw(:) + AddHH(:);
+         Nrcs_VH = Nrcs_VH_raw(:);
+
+            case 'GO1sh'
+                Th_i_d = (0.1:0.5:50)';
+                [Nrcs_VV, Nrcs_HH, ~, ~, ~] = ...
+                    f_Nrcs_3dMono_StatisticSea_GO1sh_Elfo_Gauss_Fetch_v1(...
+                    Th_i_d, windDir, er2, u10, fetch_m, Kc);
+                Nrcs_VV = Nrcs_VV(:);
+                Nrcs_HH = Nrcs_HH(:);
+                Nrcs_VH = NaN(size(Th_i_d));
+
+            case 'SPM1'
+                Th_i_d = (2:0.5:80)';
+                [Nrcs_VV, Nrcs_HH] = ...
+                    f_Nrcs_3dMono_StatisticSea_SPM1_Elfo_Gauss_Fetch_v1(...
+                    Th_i_d, windDir, er2, u10, fetch_m, K_EM);
+                Nrcs_VV = Nrcs_VV(:);
+                Nrcs_HH = Nrcs_HH(:);
+                Nrcs_VH = NaN(size(Th_i_d));
+        end
+
+
+
+    % ── KU-BAND ─────────────────────────────────────
+    case 'Wentz84'
+        Th_i_d = (0:1:60)';        
+        [Nrcs_VV, Nrcs_HH] = ...
+            f_Nrcs_3dMono_EmpExpSea_Kuband_Wentz84(Th_i_d, u10, windDir);
+        Nrcs_VH = NaN(size(Th_i_d));
+
+    case 'Wentz99'
+        Th_i_d = (15:0.5:65)';     
+        [Nrcs_VV, Nrcs_HH] = ...
+            f_Nrcs_3dMono_EmpExpSea_Kuband_Wentz99(Th_i_d, u10, windDir);
+        Nrcs_VH = NaN(size(Th_i_d));
+
+    % ── KA-BAND ─────────────────────────────────────
+    case 'Masuko Ka'
+        Th_i_d = (30:0.5:60)';     
+        [u19,~,~,~] = f_Sea_WindSpeedHeightConversion_v2(u10, 19.5, 500000);
+        [Nrcs_VV, Nrcs_HH] = ...
+            f_Nrcs_3dMono_EmpExpSea_Kaband_Masuko(Th_i_d, u19, windDir);
+        Nrcs_VH = NaN(size(Th_i_d));
+
+end
+
+    catch ME
+        uialert(app.UIFigure, ...
+            ['Erreur: ' ME.message], 'Erreur calcul', 'Icon','error');
+        return;
+    end
+
+    % --- Sélection polarisation ---
+    switch pol
+        case 'VV';  Nrcs_lin = Nrcs_VV;
+        case 'HH';  Nrcs_lin = Nrcs_HH;
+        case 'VH';  Nrcs_lin = Nrcs_VH;
+        otherwise;  Nrcs_lin = Nrcs_VV;
+    end
+
+    % --- Conversion dB ---
+    Nrcs_lin(Nrcs_lin <= 0) = NaN;
+    Nrcs_dB = 10 * log10(Nrcs_lin);
+
+    % --- Stocker session ---
+    entry.Th_i_d   = Th_i_d;
+    entry.Nrcs_dB  = Nrcs_dB;
+    entry.Nrcs_lin = Nrcs_lin;
+    entry.model    = model;
+    entry.pol      = pol;
+    entry.u10      = u10;
+    entry.windDir  = windDir;
+    entry.freq     = freq;
+    entry.label    = sprintf('%s | %s | u10=%.1f | φ=%.0f°', ...
+                        model, pol, u10, windDir);
+    app.SessionData{end+1} = entry;
+
+    % --- Affichage graphe ---
+
+    if length(app.SessionData) > 1      % s'il y a déjà des courbes → efface
+    cla(app.UIAxes3);
+    end
+    
+    hold(app.UIAxes3, 'on');
+    plot(app.UIAxes3, Th_i_d, Nrcs_dB, ...
+        'LineWidth', 2, ...
+        'DisplayName', entry.label);
+    xlabel(app.UIAxes3, 'Angle d''incidence (deg)');
+    ylabel(app.UIAxes3, 'NRCS (dB)');
+    title(app.UIAxes3, ...
+        sprintf('NRCS — %s — %s — %.2f GHz', model, pol, freq));
+    grid(app.UIAxes3, 'on');
+    legend(app.UIAxes3, 'show', 'Location', 'northeast');
+    hold(app.UIAxes3, 'off');
+
+   % --- Résultat à l'angle choisi ---
+    valid = ~isnan(Nrcs_dB) & isfinite(Nrcs_dB);
+
+    if sum(valid) < 2
+        app.NRCS905dBfor300incidenceangleLabel.Text = ...
+            'Pas assez de points valides pour interpoler.';
+        return;
+    end
+
+    Th_valid   = Th_i_d(valid);
+    Nrcs_valid = Nrcs_dB(valid);
+
+    th_min = min(Th_valid);
+    th_max = max(Th_valid);
+
+    if th_user >= th_min && th_user <= th_max
+        val_dB = interp1(Th_valid, Nrcs_valid, th_user, 'linear');
+        app.NRCS905dBfor300incidenceangleLabel.Text = ...
+            sprintf('NRCS: %.2f dB  (θ=%.1f° — %s %s)', ...
+            val_dB, th_user, model, pol);
+    else
+        app.NRCS905dBfor300incidenceangleLabel.Text = ...
+            sprintf('Angle %.1f° hors plage [%.1f°–%.1f°]', ...
+            th_user, th_min, th_max);
+    end
+
+    % ── FLAG FIN CALCUL ──
+    fid = fopen('CALC_DONE.flag', 'w');
+    fprintf(fid, 'done');
+    fclose(fid);
+
+        end
+
+        % Button pushed function: OverlayButton_2
+        function OverlayButton_2Pushed(app, event)
+ if isempty(app.SessionData)
+        uialert(app.UIFigure, ...
+            'Aucun calcul en session. Faites Calculate d''abord.', ...
+            'Overlay', 'Icon', 'warning');
+        return;
+    end
+
+    % Styles variés pour distinguer les courbes
+    lineStyles  = {'-', '--', ':', '-.', '-', '--', ':', '-.'};
+    lineWidths  = [2, 2, 2.5, 2.5, 1.5, 1.5, 2, 2];
+    markers     = {'none','none','none','none','o','s','d','^'};
+    colors      = lines(length(app.SessionData));
+
+    cla(app.UIAxes3);
+    hold(app.UIAxes3, 'on');
+    app.UIAxes3.ButtonDownFcn = @(src,evt) app.clearTooltip(src, evt);
+
+    % Calculer les limites globales pour bien voir toutes les courbes
+    all_x_min = Inf;  all_x_max = -Inf;
+    all_y_min = Inf;  all_y_max = -Inf;
+
+    for k = 1:length(app.SessionData)
+        entry = app.SessionData{k};
+
+        % Style cyclique
+        ls  = lineStyles{mod(k-1, length(lineStyles))+1};
+        lw  = lineWidths(mod(k-1, length(lineWidths))+1);
+        mrk = markers{mod(k-1, length(markers))+1};
+
+        plot(app.UIAxes3, entry.Th_i_d, entry.Nrcs_dB, ...
+            'LineStyle',  ls, ...
+            'LineWidth',  lw, ...
+            'Marker',     mrk, ...
+            'MarkerSize', 4, ...
+            'Color',      colors(k,:), ...
+            'DisplayName', entry.label, ...
+            'Tag',        num2str(k), ...
+            'ButtonDownFcn', @(src,evt) app.onCurveClick(src, evt));
+
+        % Mise à jour limites
+        valid = ~isnan(entry.Nrcs_dB);
+        if any(valid)
+            all_x_min = min(all_x_min, min(entry.Th_i_d(valid)));
+            all_x_max = max(all_x_max, max(entry.Th_i_d(valid)));
+            all_y_min = min(all_y_min, min(entry.Nrcs_dB(valid)));
+            all_y_max = max(all_y_max, max(entry.Nrcs_dB(valid)));
+        end
+    end
+
+    % Appliquer les limites avec marge
+    if ~isinf(all_x_min)
+        margin_x = (all_x_max - all_x_min) * 0.05;
+        margin_y = (all_y_max - all_y_min) * 0.1;
+        xlim(app.UIAxes3, [all_x_min - margin_x, all_x_max + margin_x]);
+        ylim(app.UIAxes3, [all_y_min - margin_y, all_y_max + margin_y]);
+    end
+
+    xlabel(app.UIAxes3, 'Incidence Angle (deg)');
+    ylabel(app.UIAxes3, 'NRCS (dB)');
+    title(app.UIAxes3, sprintf('NRCS Overlay (%d courbes)', ...
+        length(app.SessionData)));
+    grid(app.UIAxes3, 'on');
+    legend(app.UIAxes3, 'show', 'Location', 'northeast');
+    hold(app.UIAxes3, 'off');
+        end
+
+        % Button pushed function: ClearButton_2
+        function ClearButton_2Pushed(app, event)
+           
+    % Effacer graphe
+    cla(app.UIAxes3);
+    legend(app.UIAxes3, 'off');
+
+    % Effacer résultat
+    app.NRCS905dBfor300incidenceangleLabel.Text = '';
+
+    % ⚠️ Réinitialiser la session
+    app.SessionData = {};
+        end
+
+        % Button pushed function: ExportButton_2
+        function ExportButton_2Pushed(app, event)
+             if isempty(app.UIAxes3.Children)
+        uialert(app.UIFigure, 'Aucune courbe à exporter.', ...
+            'Export', 'Icon', 'warning');
+        return;
+    end
+
+    [file, path] = uiputfile(...
+        {'*.png','Image PNG'; '*.mat','Données MATLAB'}, ...
+        'Exporter');
+
+    if ischar(file)
+        fullpath = fullfile(path, file);
+        [~, ~, ext] = fileparts(file);
+
+        if strcmp(ext, '.png')
+            exportgraphics(app.UIAxes3, fullpath, 'Resolution', 150);
+            uialert(app.UIFigure, 'Graphe exporté en PNG.', 'Export OK');
+
+        elseif strcmp(ext, '.mat')
+            lines = app.UIAxes3.Children;
+            data  = struct();
+            for k = 1:length(lines)
+                if isa(lines(k), 'matlab.graphics.chart.primitive.Line')
+                    data(k).x    = lines(k).XData;
+                    data(k).y    = lines(k).YData;
+                    data(k).name = lines(k).DisplayName;
+                end
+            end
+            save(fullpath, 'data');
+            uialert(app.UIFigure, 'Données exportées en .mat.', 'Export OK');
+        end
+    end
+        end
+
+        % Button pushed function: GenerateSurfaceButton
+        function GenerateSurfaceButtonPushed(app, event)
+    % --- Récupérer les paramètres ---
+    u10     = app.Windspeedu10msEditField_2.Value;
+    phiw_d  = app.WinddirectiondegEditField.Value;
+    fetch_m = app.FetchmEditField.Value;
+    lx      = app.LengthXmEditField.Value;
+    ly      = app.LengthYmEditField.Value;
+    freq    = app.RadarfrequencyGHz130GHz2308cmEditField.Value;
+    nlb     = app.SamplesperwavelengthEditField.Value;
+
+    % Précision
+    if app.UsesingleprecisionCheckBox.Value
+        prec = 1;
+    else
+        prec = 2;
+    end
+
+    % --- Validation u10 ---
+    if u10 < 1 || u10 > 10
+        uialert(app.UIFigure, 'Wind Speed u10 doit être entre 1 et 10 m/s.', ...
+            'Paramètre invalide', 'Icon', 'warning');
+        return;
+    end
+
+    % --- Validation phiw ---
+    if phiw_d < 0 || phiw_d > 360
+        uialert(app.UIFigure, 'Wind Direction must be between 0° and 360°.', ...
+            'Paramètre invalide', 'Icon', 'warning');
+        phiw_d = 0;
+    end
+
+    % --- Validation fetch ---
+    if fetch_m <= 0
+        uialert(app.UIFigure, 'Fetch must be positive.', ...
+            'Paramètre invalide', 'Icon', 'warning');
+        fetch_m = 500e3;
+    end
+
+    % --- Calcul échantillonnage ---
+    c_ms  = 3e8;
+    lb0_m = c_ms / (freq * 1e9);
+    dxy_m = lb0_m / nlb;
+    n_x_raw = round(lx / dxy_m / 2) * 2;
+    n_y_raw = round(ly / dxy_m / 2) * 2;
+
+    if app.RoundtotheNearestPowerof2CheckBox_2.Value
+        n_x = 2^round(log2(max(1, n_x_raw)));
+        n_y = 2^round(log2(max(1, n_y_raw)));
+    else
+        n_x = 2^nextpow2(n_x_raw);
+        n_y = 2^nextpow2(n_y_raw);
+    end
+
+
+    % --- Vérification longueur minimale ---
+    g    = 9.81;
+    x0   = 2.2e4;
+    k0   = g / u10^2;
+    xmaj = k0 * fetch_m;
+    omgc = 0.84 * tanh((xmaj/x0)^0.4)^(-0.75);
+    kp   = k0 * omgc^2;
+    kmin = 0.3 * kp;
+    lmin = 2*pi / kmin;
+    if lx < lmin || ly < lmin
+        uialert(app.UIFigure, ...
+            sprintf(['Warning: Surface not long enough.\n' ...
+                     'lmin = %.1f m\nLx = %.1f m, Ly = %.1f m'], ...
+                     lmin, lx, ly), ...
+            'Avertissement', 'Icon', 'warning');
+    end
+
+    % --- Vérification RAM ---
+    if ispc
+        [~, sys]       = memory;
+        totalRAM_bytes = sys.PhysicalMemory.Total;
+    else
+        totalRAM_bytes = 16e9;
+    end
+    RAM_max_10pct    = 0.10 * totalRAM_bytes;
+    bytes_per_point  = 8 - 4*(prec==1);
+    npoints          = n_x * n_y;
+    mem_needed_bytes = npoints * bytes_per_point + 2*max(n_x,n_y)*8;
+
+    if mem_needed_bytes > RAM_max_10pct
+        uialert(app.UIFigure, ...
+            sprintf('Insufficient memory!\n%.2f GB required\nLimit: %.1f GB', ...
+            mem_needed_bytes/1e9, RAM_max_10pct/1e9), ...
+            'Memory limit exceeded', 'Icon', 'warning');
+    end
+
+    % --- Progress dialog ---
+    d = uiprogressdlg(app.UIFigure, ...
+        'Title',         'Génération', ...
+        'Message',       'Generation in progress...', ...
+        'Indeterminate', 'on');
+    drawnow;
+
+    % ── FLAG DÉBUT ──
+    try
+        fid = fopen('CALC_START.flag', 'w');
+        fprintf(fid, 'start');
+        fclose(fid);
+    catch
+    end
+
+    % ── RAM avant calcul (whos) ──
+    vars_avant  = whos;
+    ram_avant_W = sum([vars_avant.bytes]) / 1024^2;
+
+    % --- Génération ---
+    try
+        tic;
+        [HH_XY, X, Y] = f_GeneSurfMer3D_Fetch_Elfo_v3( ...
+            u10, phiw_d, lx, ly, n_x, n_y, 1, prec, fetch_m);
+        temps_gen = toc;
+        close(d);
+
+    catch ME
+        close(d);
+        uialert(app.UIFigure, ['Erreur : ' ME.message], ...
+            'Erreur génération', 'Icon', 'error');
+        return;
+    end
+
+    % ── RAM après calcul (whos) ──
+    vars_apres   = whos;
+    ram_apres_W  = sum([vars_apres.bytes]) / 1024^2;
+    delta_RAM_MB = ram_apres_W - ram_avant_W;
+
+    % --- Taille surface ---
+    bytes_per_el = 8 - 4*isa(HH_XY,'single');
+    mem_Mo       = (numel(HH_XY) + numel(X) + numel(Y)) * bytes_per_el / 1e6;
+
+    % --- Affichage performances ---
+    fprintf('=== PERFORMANCE App Designer ===\n');
+    fprintf('Taille             : %d × %d\n',  n_x, n_y);
+    fprintf('Temps              : %.4f s\n',   temps_gen);
+    fprintf('RAM calcul (whos)  : %.2f Mo\n',  delta_RAM_MB);
+    fprintf('RAM avant          : %.2f Mo\n',  ram_avant_W);
+    fprintf('RAM après          : %.2f Mo\n',  ram_apres_W);
+    fprintf('Taille surface     : %.1f Mo\n',  mem_Mo);
+    fprintf('================================\n');
+
+    % --- Stats surface ---
+    z_min  = min(HH_XY(:));
+    z_max  = max(HH_XY(:));
+    z_mean = mean(HH_XY(:));
+    z_std  = std(HH_XY(:));
+
+    app.ZminLabel.Text  = 'Zmin: ';
+    app.ZmaxLabel.Text  = 'Zmax: ';
+    app.ZmeanLabel.Text = 'Zmean: ';
+    app.ZstdLabel.Text  = 'Zstd: ';
+    app.Label.Text      = sprintf('%.4f m', z_min);
+    app.Label_2.Text    = sprintf('%.4f m', z_mean);
+    app.Label_3.Text    = sprintf('%.4f m', z_max);
+    app.Label_4.Text    = sprintf('%.4f m', z_std);
+
+% --- Affichage surface ---
+cla(app.UIAxes2);
+pasx = 2; pasy = 2;
+
+h = surf(app.UIAxes2, ...
+    Y(1:pasy:end), X(1:pasx:end), ...
+    HH_XY(1:pasx:end, 1:pasy:end));
+
+shading(app.UIAxes2, 'interp');
+colormap(app.UIAxes2, 'jet');
+
+% ── CORRECTION : vue 3D isométrique ──
+view(app.UIAxes2, -30, 30);
+axis(app.UIAxes2, 'tight');
+app.UIAxes2.DataAspectRatio = [1 1 0.05];  % Z aplati pour mieux voir les vagues
+
+xlabel(app.UIAxes2, 'Y (m)');
+ylabel(app.UIAxes2, 'X (m)');
+zlabel(app.UIAxes2, 'Z (m)');
+app.UIAxes2.Box           = 'off';
+app.UIAxes2.Color         = [1 1 1];
+app.UIAxes2.ZAxis.Visible = 'off';
+
+% ── Colorbar ──
+cb = colorbar(app.UIAxes2);
+cb.Label.String = 'Height (m)';
+cb.FontSize     = 9;
+
+% ── Clic ──
+h.HitTest       = 'on';
+h.PickableParts = 'all';
+h.ButtonDownFcn = @(src, evt) app.onSurfaceClick(src, evt);
+app.UIAxes2.HitTest = 'off';
+
+    % --- Stocker pour Export ---
+    app.LastSurface.HH_XY    = HH_XY;
+    app.LastSurface.X        = X;
+    app.LastSurface.Y        = Y;
+    app.LastSurface.windSpeed = u10;
+    app.LastSurface.fetch_m  = fetch_m;
+    app.LastSurface.freq_GHz = freq;
+    app.LastSurface.nx       = n_x;
+    app.LastSurface.ny       = n_y;
+
+    % --- Message fin ---
+    uialert(app.UIFigure, ...
+        sprintf('Surface %d×%d generated in %.2f s\nSize ≈ %.1f Mo\nRAM used ≈ %.1f MB', ...
+        n_x, n_y, temps_gen, mem_Mo, delta_RAM_MB), ...
+        'Generation completed', 'Icon', 'success');
+
+    % ── FLAG FIN — après uialert ✅ ──
+    try
+        fid = fopen('CALC_DONE.flag', 'w');
+        fprintf(fid, '%.2f;%.2f;%.2f;%d;%d;%.2f', ...
+            temps_gen, delta_RAM_MB, ram_avant_W, n_x, n_y, mem_Mo);
+        fclose(fid);
+    catch
+    end
+
+        end
+
+        % Button pushed function: ClearSurfaceButton
+        function ClearSurfaceButtonPushed(app, event)
+       cla(app.UIAxes2);
+
+    % ── Cacher le profil et remettre le layout ──
+    app.UIAxes5.Visible          = 'off';
+    app.GridLayout15.RowHeight   = {'1x', 0, 130};
+    cla(app.UIAxes5);
+
+    app.ZminLabel.Text  = 'Zmin: ';
+    app.ZmaxLabel.Text  = 'Zmax: ';
+    app.ZmeanLabel.Text = 'Zmean: ';
+    app.ZstdLabel.Text  = 'Zstd: ';
+
+    app.Label.Text   = '—';
+    app.Label_2.Text = '—';
+    app.Label_3.Text = '—';
+    app.Label_4.Text = '—';
+
+    app.LastSurface = struct();
+        end
+
+        % Button pushed function: ExportSurfaceButton
+        function ExportSurfaceButtonPushed(app, event)
+            % Vérifier qu'une surface existe
+    if ~isfield(app.LastSurface, 'HH_XY')
+        uialert(app.UIFigure, ...
+            'Aucune surface à exporter. Faites Generate d''abord.', ...
+            'Export', 'Icon', 'warning');
+        return;
+    end
+
+    % --- Dialogue de sélection du format ---
+    formats = {
+        'Export .mat file', ...
+        'Export .csv file', ...
+        'Export .png image', ...
+        'Export ALL (.mat + .csv + .png)'
+    };
+
+    [idx, ok] = listdlg( ...
+        'PromptString',  'Select export format:', ...
+        'SelectionMode', 'single', ...
+        'ListString',    formats, ...
+        'ListSize',      [300 120], ...
+        'Name',          'Export Sea Surface', ...
+        'OKString',      'OK', ...
+        'CancelString',  'Cancel');
+
+    if ~ok
+        return;  % ← utilisateur a cliqué Cancel
+    end
+
+    % --- Choisir le dossier de sauvegarde ---
+    folder = uigetdir('', 'Choisir le dossier de sauvegarde');
+    if folder == 0
+        return;  % ← utilisateur a annulé
+    end
+
+    % --- Récupérer les données ---
+    HH_XY = app.LastSurface.HH_XY;
+    X     = app.LastSurface.X;
+    Y     = app.LastSurface.Y;
+
+    % --- Export selon le format choisi ---
+    switch idx
+
+        case 1  % .mat
+            filepath = fullfile(folder, 'SeaSurface.mat');
+            save(filepath, 'HH_XY', 'X', 'Y');
+            uialert(app.UIFigure, ...
+                ['Surface exportée : ' filepath], ...
+                'Export OK', 'Icon', 'success');
+
+        case 2  % .csv
+            filepath = fullfile(folder, 'SeaSurface.csv');
+            writematrix(HH_XY, filepath);
+            uialert(app.UIFigure, ...
+                ['Surface exportée : ' filepath], ...
+                'Export OK', 'Icon', 'success');
+
+        case 3  % .png
+            filepath = fullfile(folder, 'SeaSurface.png');
+            exportgraphics(app.UIAxes2, filepath, 'Resolution', 150);
+            uialert(app.UIFigure, ...
+                ['Image exportée : ' filepath], ...
+                'Export OK', 'Icon', 'success');
+
+        case 4  % ALL
+            % .mat
+            save(fullfile(folder, 'SeaSurface.mat'), 'HH_XY', 'X', 'Y');
+            % .csv
+            writematrix(HH_XY, fullfile(folder, 'SeaSurface.csv'));
+            % .png
+            exportgraphics(app.UIAxes2, ...
+                fullfile(folder, 'SeaSurface.png'), 'Resolution', 150);
+
+            uialert(app.UIFigure, ...
+                ['3 fichiers exportés dans : ' folder], ...
+                'Export ALL OK', 'Icon', 'success');
+    end
+        end
+
+        % Value changed function: FrequencyGHzEditField
+        function FrequencyGHzEditFieldValueChanged(app, event)
+            value = app.FrequencyGHzEditField.Value;
+            
+        end
+
+        % Value changed function: FrequencybandDropDown
+        function FrequencybandDropDownValueChanged(app, event)
+        band = app.FrequencybandDropDown.Value;
+
+    switch band
+        case 'UHF: 0.3-1 GHz'
+            app.ModelDropDown_2.Items = {'NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'TSM';
+            app.FrequencyGHzEditField.Value = 0.65;
+
+        case 'L-band: 1-2 GHz'
+            app.ModelDropDown_2.Items = {'Isoguchi','Meissner','NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'Isoguchi';
+            app.FrequencyGHzEditField.Value = 1.5;
+
+        case 'S-band: 2-4 GHz'
+            app.ModelDropDown_2.Items = {'NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'TSM';
+            app.FrequencyGHzEditField.Value = 3.0;
+
+        case 'C-band: 4-8 GHz'
+            app.ModelDropDown_2.Items = {'Quilfen','CMOD2-I3','CMOD5','CMOD5N','NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'CMOD5N';
+            app.FrequencyGHzEditField.Value = 6.0;
+
+        case 'X-band: 8-12 GHz'
+            app.ModelDropDown_2.Items = {'XMOD1R','XMOD2N','Masuko X','NRL','TSC','GIT','HYBRID','RRE','SITTROP','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'XMOD1R';
+            app.FrequencyGHzEditField.Value = 10.0;
+
+        case 'Ku-band: 12-18 GHz'
+            app.ModelDropDown_2.Items = {'Wentz84','Wentz99','NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'Wentz84';
+            app.FrequencyGHzEditField.Value = 15.0;
+
+        case 'K-band: 18-27 GHz'
+            app.ModelDropDown_2.Items = {'NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'TSM';
+            app.FrequencyGHzEditField.Value = 22.5;
+
+        case 'Ka-band: 27-40 GHz'
+            app.ModelDropDown_2.Items = {'Masuko Ka','NRL','TSC','HYBRID','TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'Masuko Ka';
+            app.FrequencyGHzEditField.Value = 33.5;
+
+        case 'V-band: 40-75 GHz'
+            app.ModelDropDown_2.Items = {'TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'TSM';
+            app.FrequencyGHzEditField.Value = 57.5;
+
+        case 'W-band: 75-110 GHz'
+            app.ModelDropDown_2.Items = {'TSM','GO1sh','SPM1'};
+            app.ModelDropDown_2.Value = 'TSM';
+            app.FrequencyGHzEditField.Value = 92.5;
+    end
+
+    % --- Polarisation ---
+    model = app.ModelDropDown_2.Value;
+    switch model
+        case 'Isoguchi'
+            app.PolarizationDropDown_2.Items = {'HH'};
+            app.PolarizationDropDown_2.Value = 'HH';
+        case {'Meissner','TSM'}
+            app.PolarizationDropDown_2.Items = {'VV','HH','VH'};
+            app.PolarizationDropDown_2.Value = 'VV';
+        case {'Quilfen','CMOD2-I3','CMOD5','CMOD5N','XMOD1R','XMOD2N'}
+            app.PolarizationDropDown_2.Items = {'VV'};
+            app.PolarizationDropDown_2.Value = 'VV';
+        otherwise
+            app.PolarizationDropDown_2.Items = {'VV','HH'};
+            app.PolarizationDropDown_2.Value = 'VV';
+    end
+
+    % --- Fetch ---
+    if ismember(model, {'TSM','GO1sh','SPM1'})
+        app.FetchmEditField_2.Enable = 'on';
+    else
+        app.FetchmEditField_2.Enable = 'off';
+    end
+
+    % --- Kw/Kc ---
+    if ismember(model, {'TSM','GO1sh'})
+        app.kokcEditField.Enable = 'on';
+        if strcmp(model,'TSM');    app.kokcEditField.Value = 4; end
+        if strcmp(model,'GO1sh');  app.kokcEditField.Value = 3; end
+    else
+        app.kokcEditField.Enable = 'off';
+    end
+        end
+
+        % Value changed function: PolarizationDropDown_2
+        function PolarizationDropDown_2ValueChanged(app, event)
+           value = app.PolarizationDropDown_2.Value;
+    
+        end
+
+        % Value changed function: ModelDropDown_2
+        function ModelDropDown_2ValueChanged(app, event)
+       model = app.ModelDropDown_2.Value;
+
+    % --- Polarisation ---
+    switch model
+        case 'Isoguchi'
+            app.PolarizationDropDown_2.Items = {'HH'};
+            app.PolarizationDropDown_2.Value = 'HH';
+
+        case {'Meissner','TSM'}
+            app.PolarizationDropDown_2.Items = {'VV','HH','VH'};
+            app.PolarizationDropDown_2.Value = 'VV';
+
+        case {'Quilfen','CMOD2-I3','CMOD5','CMOD5N','XMOD1R','XMOD2N'}
+            app.PolarizationDropDown_2.Items = {'VV'};
+            app.PolarizationDropDown_2.Value = 'VV';
+
+        otherwise
+            app.PolarizationDropDown_2.Items = {'VV','HH'};
+            app.PolarizationDropDown_2.Value = 'VV';
+    end
+
+    % --- Fetch ---
+    if ismember(model, {'TSM','GO1sh','SPM1'})
+        app.FetchmEditField_2.Enable = 'on';
+    else
+        app.FetchmEditField_2.Enable = 'off';
+    end
+
+    % --- Kw/Kc ---
+    if ismember(model, {'TSM','GO1sh'})
+        app.kokcEditField.Enable = 'on';
+        if strcmp(model,'TSM');    app.kokcEditField.Value = 4; end
+        if strcmp(model,'GO1sh');  app.kokcEditField.Value = 3; end
+    else
+        app.kokcEditField.Enable = 'off';
+    end
+
+
+            
+        end
+
+        % Button pushed function: GenerateprofilesButton
+        function GenerateprofilesButtonPushed(app, event)
+   u10     = app.Windspeedu10msEditField_3.Value;
+    fetch_m = app.FetchmEditField_3.Value;
+    l_s     = app.LengthmEditField.Value;
+    freq    = app.RadarfrequencyGHz130GHz2308cmEditField_2.Value;
+    nlb     = app.SamplesperwavelengthEditField_2.Value;
+    Nprof   = app.NprofilesEditField.Value;
+    prec    = 2;
+
+    if u10<=0 || l_s<=0 || fetch_m<=0 || freq<=0 || nlb<1 || Nprof<1
+        uialert(app.UIFigure, ...
+            'Paramètres invalides.', 'Paramètre invalide', 'Icon', 'warning');
+        return;
+    end
+
+    c_ms     = 3e8;
+    lambda_m = c_ms / (freq * 1e9);
+    n_s      = round(l_s / lambda_m) * nlb;
+    n_s      = 2^nextpow2(n_s);
+
+    d = uiprogressdlg(app.UIFigure, ...
+        'Title',         'Génération des profils', ...
+        'Message',       sprintf('Generating %d profiles (n_s = %d)...', Nprof, n_s), ...
+        'Indeterminate', 'on');
+    drawnow;
+
+    % ── RAM avant calcul ──
+    vars_avant  = whos;
+    ram_avant_W = sum([vars_avant.bytes]) / 1024^2;
+
+    app.ProfilesData = cell(1, Nprof);
+    try
+        tic;
+        for k = 1:Nprof
+            [H, X_h, ~, ~, ~, ~, ~] = f_GeneSurfMer2D_ElfoGauss_Fetch_v2b( ...
+                u10, l_s, n_s, double(k), fetch_m, prec);
+            app.ProfilesData{k}.H = H(:);
+            app.ProfilesData{k}.X = X_h(:);
+        end
+        temps_gen = toc;
+    catch ME
+        close(d);
+        uialert(app.UIFigure, ['Erreur : ' ME.message], ...
+            'Erreur génération', 'Icon', 'error');
+        return;
+    end
+    close(d);
+
+    % ── RAM après calcul ──
+    vars_apres   = whos;
+    ram_apres_W  = sum([vars_apres.bytes]) / 1024^2;
+    delta_RAM_MB = ram_apres_W - ram_avant_W;
+
+    % ── Taille mémoire des profils ──
+    mem_Mo = 0;
+   % Pré-allouer
+H_all = cell(1, Nprof);
+X_all = cell(1, Nprof);
+
+parfor k = 1:Nprof
+    [H_k, X_h_k, ~, ~, ~, ~, ~] = f_GeneSurfMer2D_ElfoGauss_Fetch_v2b( ...
+        u10, l_s, n_s, double(k), fetch_m, prec);
+    H_all{k} = H_k(:);
+    X_all{k} = X_h_k(:);
+end
+
+% Stocker dans app.ProfilesData
+for k = 1:Nprof
+    app.ProfilesData{k}.H = H_all{k};
+    app.ProfilesData{k}.X = X_all{k};
+end
+
+    % ── Reset stats ──
+    app.Label_5.Text = '—';
+    app.Label_6.Text = '—';
+    app.Label_7.Text = '—';
+    app.Label_8.Text = '—';
+
+    % ── Remplir le dropdown Selected Profile EN PREMIER ──
+    items = arrayfun(@(k) sprintf('P%d', k), 1:Nprof, 'UniformOutput', false);
+    app.ProfileDropDown.Items = [{'— Select a profile —'}, items];
+    app.ProfileDropDown.Value = '— Select a profile —';
+
+    % ── Initialiser la plage par défaut 1-5 ──
+    iEnd = min(5, Nprof);
+    app.LastSurface.ProfileRange = [1, iEnd];
+    app.fillRangeDropDowns(Nprof, 1, iEnd);
+
+    % ── Afficher les profils ──
+    app.drawProfiles(-1);
+
+
+    % ── Synchroniser les paramètres vers l'onglet 4 ──
+app.Windspeedu10msEditField_4.Value   = u10;
+app.FetchmEditField_4.Value           = fetch_m;
+app.LengthmEditField_2.Value          = l_s;
+app.RadarfrequencyGHz130GHz2308cmEditField_3.Value = freq;
+app.SamplesperwavelengthEditField_3.Value = nlb;
+app.NumberofsamplesEditField_3.Value  = n_s;
+
+app.updateFreqLabelTab4();
+
+% ── Remplir le dropdown de sélection de profil (onglet 4) ──
+items4 = arrayfun(@(k) sprintf('P%d', k), 1:Nprof, 'UniformOutput', false);
+app.ProfileSelectorDropDown.Items = items4;
+app.ProfileSelectorDropDown.Value = items4{1};
+app.onProfileSelectorChanged();  % charger P1 par défaut
+
+    % ── Message avec performances ──
+    uialert(app.UIFigure, ...
+        sprintf(['%d profiles generated in %.2f s\n' ...
+                 'n_s = %d samples per profile\n' ...
+                 'Size ≈ %.2f Mo\n' ...
+                 'RAM used ≈ %.1f MB'], ...
+                 Nprof, temps_gen, n_s, mem_Mo, delta_RAM_MB), ...
+        'Generation completed', 'Icon', 'success');
+
+        end
+
+        % Button pushed function: ClearprofilesButton
+        function ClearprofilesButtonPushed(app, event)
+  app.ProfilesData = {};
+
+    % ── Effacer le graphe ──
+    cla(app.UIAxes4);
+    title(app.UIAxes4, '');
+    legend(app.UIAxes4, 'off');
+
+    % ── Reset dropdowns range ──
+    app.RangeStartDropDown.ValueChangedFcn = [];
+    app.RangeEndDropDown.ValueChangedFcn   = [];
+    app.RangeStartDropDown.Items = {'—'};
+    app.RangeEndDropDown.Items   = {'—'};
+    app.RangeStartDropDown.Value = '—';
+    app.RangeEndDropDown.Value   = '—';
+    app.RangeStartDropDown.ValueChangedFcn = @(~,~) app.onRangeDropDownChanged();
+    app.RangeEndDropDown.ValueChangedFcn   = @(~,~) app.onRangeDropDownChanged();
+
+    % ── Reset dropdown Selected Profile ──
+    app.ProfileDropDown.Items = {'— Generate first —'};
+    app.ProfileDropDown.Value = '— Generate first —';
+
+    % ── Reset stats ──
+    app.Label_5.Text = '—';
+    app.Label_6.Text = '—';
+    app.Label_7.Text = '—';
+    app.Label_8.Text = '—';
+
+        end
+
+        % Button pushed function: ExportprofilesButton
+        function ExportprofilesButtonPushed(app, event)
+    if isempty(app.ProfilesData)
+        uialert(app.UIFigure, 'No profiles to export. Generate first.', ...
+            'Export', 'Icon', 'warning');
+        return;
+    end
+
+    % ── Choix du format — filtres corrects avec * ──
+    [file, path] = uiputfile( ...
+        {'*.csv', 'CSV file (*.csv)'; ...
+         '*.mat', 'MATLAB file (*.mat)'; ...
+         '*.png', 'PNG image (*.png)'}, ...
+        'Export profiles');
+
+    if isequal(file, 0); return; end
+
+    [~, ~, ext] = fileparts(file);
+    fullpath    = fullfile(path, file);
+
+    switch lower(ext)
+        case '.csv'
+            try
+                fid = fopen(fullpath, 'w');
+                if fid == -1
+                    uialert(app.UIFigure, ...
+                        'Cannot open file for writing.', ...
+                        'Export error', 'Icon', 'error');
+                    return;
+                end
+                fprintf(fid, 'Profile,X_m,Z_m\n');
+                for k = 1:numel(app.ProfilesData)
+                    p = app.ProfilesData{k};
+                    for i = 1:numel(p.H)
+                        fprintf(fid, 'P%d,%.6f,%.6f\n', k, p.X(i), p.H(i));
+                    end
+                end
+                fclose(fid);
+                uialert(app.UIFigure, ...
+                    sprintf('%d profiles exported to:\n%s', ...
+                    numel(app.ProfilesData), fullpath), ...
+                    'Export OK', 'Icon', 'success');
+            catch ME
+                uialert(app.UIFigure, ...
+                    ['Export error: ' ME.message], ...
+                    'Export error', 'Icon', 'error');
+            end
+
+        case '.mat'
+            try
+                ProfilesData = app.ProfilesData;
+                save(fullpath, 'ProfilesData');
+                uialert(app.UIFigure, ...
+                    sprintf('%d profiles exported to:\n%s', ...
+                    numel(app.ProfilesData), fullpath), ...
+                    'Export OK', 'Icon', 'success');
+            catch ME
+                uialert(app.UIFigure, ...
+                    ['Export error: ' ME.message], ...
+                    'Export error', 'Icon', 'error');
+            end
+
+        case '.png'
+            if isempty(app.UIAxes4.Children)
+                uialert(app.UIFigure, 'No graph to export.', ...
+                    'Export', 'Icon', 'warning');
+                return;
+            end
+            try
+                exportgraphics(app.UIAxes4, fullpath, 'Resolution', 150);
+                uialert(app.UIFigure, ...
+                    ['Graph exported: ' fullpath], ...
+                    'Export OK', 'Icon', 'success');
+            catch ME
+                uialert(app.UIFigure, ...
+                    ['Export error: ' ME.message], ...
+                    'Export error', 'Icon', 'error');
+            end
+
+        otherwise
+            uialert(app.UIFigure, ...
+                sprintf('Unknown format: %s', ext), ...
+                'Export', 'Icon', 'error');
+    end
+            
+        end
+
+        % Button pushed function: CalculateButton_3
+        function CalculateButton_3Pushed(app, event)
+     
+        if isempty(app.ProfilesData)
+        uialert(app.UIFigure, ...
+            'No profiles loaded. Generate profiles in Tab 3 first.', ...
+            'No profile', 'Icon', 'warning');
+        return;
+    end
+
+    % ── Paramètres ──
+    u10     = app.Windspeedu10msEditField_4.Value;
+    freq    = app.RadarfrequencyGHz130GHz2308cmEditField_3.Value;
+    fetch_m = app.FetchmEditField_4.Value;
+    th_i_d  = app.IncidenceAngleTab4EditField.Value;
+    Polar   = app.PolarizationTab4DropDown.Value;
+
+    Nprof = numel(app.ProfilesData);
+
+    % ── Validation taille ──
+    n_s   = length(app.ProfilesData{1}.X);
+    mem_GB = (n_s^2 * 16) / 1e9;
+    if mem_GB > 2.0
+        uialert(app.UIFigure, sprintf([ ...
+            'Profile too large for integral equation!\n\n' ...
+            'n_s = %d → matrix %.1f GB per profile\n\n' ...
+            'Please reduce Length (m) or Samples/wavelength.\n' ...
+            'Recommended: n_s ≤ 8000'], n_s, mem_GB), ...
+            'Profile too large', 'Icon', 'warning');
+        return;
+    end
+
+    % ── Constantes ──
+    c_ms    = 3e8;
+    lb0_m   = c_ms / (freq * 1e9);
+    k0_EM   = 2*pi / lb0_m;
+    eta_inc = 119.9169832 * pi;
+    g_phy   = 9.81;
+    k0_sea  = g_phy / u10^2;
+    Th_s_r  = (-89:1:89) * pi/180;
+
+    % ── Extraire les données profils pour parfor ──
+    ProfileX = cell(1, Nprof);
+    ProfileH = cell(1, Nprof);
+    for k = 1:Nprof
+        ProfileX{k} = app.ProfilesData{k}.X(:)';
+        ProfileH{k} = app.ProfilesData{k}.H(:)';
+    end
+
+    % ── Progress dialog ──
+    d = uiprogressdlg(app.UIFigure, ...
+        'Title',         'NRCS Calculation', ...
+        'Message',       sprintf('Computing NRCS for %d profiles (n_s=%d, %.2f GB each)...', ...
+                         Nprof, n_s, mem_GB), ...
+        'Indeterminate', 'on');
+    drawnow;
+
+    % ── Calcul parallèle ──
+    NRCS_all   = zeros(Nprof, length(Th_s_r));
+    retro_all  = zeros(1, Nprof);
+    calcOK     = true(1, Nprof);
+    errMsgs    = cell(1, Nprof);
+
+    try
+        parfor k = 1:Nprof
+            X_h = ProfileX{k};
+            H   = ProfileH{k};
+
+            try
+                g_thorsos = (X_h(end) - X_h(1)) / 6;
+                Dx    = gradient(X_h);
+                DerZ  = gradient(H) ./ Dx;
+                Der2Z = gradient(DerZ) ./ Dx;
+                V     = ones(size(X_h));
+
+                [Psi_inc, ~] = F_IIncidenteWave_Thorsos( ...
+                    th_i_d, g_thorsos, k0_EM, X_h, H);
+
+                p_inc_num = trapz(X_h, abs(Psi_inc).^2 / (2*eta_inc));
+
+                ZZ = F_IImpedanceMatrices( ...
+                    X_h, H, Dx, DerZ, Der2Z, V, k0_EM, Polar);
+
+                Current = linsolve(ZZ, Psi_inc.');
+                Current = Current.';
+
+                if strcmp(Polar, 'TE')
+                    D_Psi = Current;
+                    Psi_s = zeros(size(X_h));
+                else
+                    Psi_s = Current;
+                    D_Psi = zeros(size(X_h));
+                end
+
+                Psi_sca = F_IFarField( ...
+                    X_h, H, Dx, DerZ, V, k0_EM, Psi_s, D_Psi, Th_s_r);
+
+                coef = eta_inc / (p_inc_num * 16 * pi * k0_sea);
+                Nrcs = coef * abs(Psi_sca).^2;
+                NRCS_all(k, :) = 10 * log10(Nrcs + eps);
+
+            catch ME_k
+                calcOK(k)  = false;
+                errMsgs{k} = ME_k.message;
+                NRCS_all(k, :) = NaN;
+            end
+        end
+
+        close(d);
+
+    catch ME
+        close(d);
+        uialert(app.UIFigure, ['Calculation error: ' ME.message], ...
+            'Error', 'Icon', 'error');
+        return;
+    end
+
+    % ── Rapporter les erreurs ──
+    failIdx = find(~calcOK);
+    if ~isempty(failIdx)
+        msg = sprintf('Warning: %d profile(s) failed:\n', numel(failIdx));
+        for fi = failIdx
+            msg = [msg sprintf('  P%d: %s\n', fi, errMsgs{fi})];
+        end
+        uialert(app.UIFigure, msg, 'Partial results', 'Icon', 'warning');
+    end
+
+    % ── Afficher les NRCS ──
+    Th_s_d = Th_s_r * 180/pi;
+    th_retro = -th_i_d;
+    [~, i_r] = min(abs(Th_s_d - th_retro));
+
+    cla(app.NRCSAxes);
+    hold(app.NRCSAxes, 'on');
+    colors = lines(Nprof);
+
+    for k = 1:Nprof
+        if calcOK(k)
+            plot(app.NRCSAxes, Th_s_d, NRCS_all(k, :), ...
+                'LineWidth', 1.5, ...
+                'Color',     colors(k, :), ...
+                'DisplayName', sprintf('P%d', k));
+            retro_all(k) = NRCS_all(k, i_r);
+        end
+    end
+
+    % ── Moyenne si plusieurs profils ──
+    valid_rows = calcOK;
+    if sum(valid_rows) > 1
+        NRCS_mean = mean(NRCS_all(valid_rows, :), 1);
+        plot(app.NRCSAxes, Th_s_d, NRCS_mean, ...
+            'LineWidth', 3, ...
+            'Color',     [0 0 0], ...
+            'LineStyle', '--', ...
+            'DisplayName', sprintf('Mean (%d profiles)', sum(valid_rows)));
+        retro_mean = NRCS_mean(i_r);
+    else
+        retro_mean = retro_all(find(valid_rows, 1));
+    end
+
+    % ── Marquer rétrodiffusion ──
+    plot(app.NRCSAxes, th_retro, retro_mean, ...
+        'kv', 'MarkerSize', 10, 'MarkerFaceColor', 'k');
+    text(app.NRCSAxes, th_retro + 2, retro_mean, ...
+        sprintf('  %.2f dB', retro_mean), ...
+        'FontSize', 9, 'Color', 'k', 'FontWeight', 'bold');
+
+    hold(app.NRCSAxes, 'off');
+    grid(app.NRCSAxes, 'on');
+    xlabel(app.NRCSAxes, '\theta_{sca} (deg)');
+    ylabel(app.NRCSAxes, 'NRCS (dB)');
+    title(app.NRCSAxes, sprintf('NRCS — %d profiles — %s — θ_{inc}=%d° — %.2f GHz', ...
+        sum(calcOK), Polar, th_i_d, freq));
+    xlim(app.NRCSAxes, [-90 90]);
+    xticks(app.NRCSAxes, -90:30:90);
+    legend(app.NRCSAxes, 'Location', 'northeast', 'FontSize', 8);
+
+    uialert(app.UIFigure, ...
+        sprintf(['NRCS calculated:\n' ...
+                 '  Profiles: %d/%d OK\n' ...
+                 '  Backscatter at θ=%d°: %.2f dB (mean)\n' ...
+                 '  n_s = %d  |  %.2f GB/profile'], ...
+        sum(calcOK), Nprof, th_i_d, retro_mean, n_s, mem_GB), ...
+        'NRCS OK', 'Icon', 'success');
+        end
+
+        % Button pushed function: ClearButton_3
+        function ClearButton_3Pushed(app, event)
+
+    cla(app.UIAxes4_2);
+    app.ProfileForNRCS  = [];
+    app.ProfileXForNRCS = [];
+
+    app.ProfileSelectorDropDown.Items = {'— Generate profiles first —'};
+    app.ProfileSelectorDropDown.Value = '— Generate profiles first —';
+
+    app.Windspeedu10msEditField_4.Value   = 0;
+    app.FetchmEditField_4.Value           = 0;
+    app.LengthmEditField_2.Value          = 0;
+    app.RadarfrequencyGHz130GHz2308cmEditField_3.Value = 0;
+    app.SamplesperwavelengthEditField_3.Value = 0;
+    app.NumberofsamplesEditField_3.Value  = 0;
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Get the file path for locating images
+            pathToMLAPP = fileparts(mfilename('fullpath'));
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 1113 700];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create TabGroup
+            app.TabGroup = uitabgroup(app.UIFigure);
+            app.TabGroup.Position = [20 36 1047 625];
+
+            % Create NRCSSimulationTab_2
+            app.NRCSSimulationTab_2 = uitab(app.TabGroup);
+            app.NRCSSimulationTab_2.Title = 'NRCS Simulation';
+
+            % Create GridLayout17
+            app.GridLayout17 = uigridlayout(app.NRCSSimulationTab_2);
+            app.GridLayout17.ColumnWidth = {'1x'};
+            app.GridLayout17.RowHeight = {60, '1x', 55};
+            app.GridLayout17.RowSpacing = 4;
+
+            % Create GridLayout18
+            app.GridLayout18 = uigridlayout(app.GridLayout17);
+            app.GridLayout18.ColumnWidth = {'1x', 80, 80};
+            app.GridLayout18.RowHeight = {'1x'};
+            app.GridLayout18.Padding = [5 5 10 10];
+            app.GridLayout18.Layout.Row = 1;
+            app.GridLayout18.Layout.Column = 1;
+
+            % Create SeaSurfaceRadarSimulatorLabel_3
+            app.SeaSurfaceRadarSimulatorLabel_3 = uilabel(app.GridLayout18);
+            app.SeaSurfaceRadarSimulatorLabel_3.FontSize = 18;
+            app.SeaSurfaceRadarSimulatorLabel_3.FontWeight = 'bold';
+            app.SeaSurfaceRadarSimulatorLabel_3.Layout.Row = 1;
+            app.SeaSurfaceRadarSimulatorLabel_3.Layout.Column = 1;
+            app.SeaSurfaceRadarSimulatorLabel_3.Text = 'Sea Surface Radar Simulator';
+
+            % Create Image3
+            app.Image3 = uiimage(app.GridLayout18);
+            app.Image3.Layout.Row = 1;
+            app.Image3.Layout.Column = 3;
+            app.Image3.HorizontalAlignment = 'right';
+            app.Image3.ImageSource = fullfile(pathToMLAPP, 'logo_ietr.png');
+
+            % Create Image4
+            app.Image4 = uiimage(app.GridLayout18);
+            app.Image4.ScaleMethod = 'fill';
+            app.Image4.Layout.Row = 1;
+            app.Image4.Layout.Column = 2;
+            app.Image4.HorizontalAlignment = 'right';
+            app.Image4.VerticalAlignment = 'top';
+            app.Image4.ImageSource = fullfile(pathToMLAPP, 'logo_icam.png');
+
+            % Create GridLayout19
+            app.GridLayout19 = uigridlayout(app.GridLayout17);
+            app.GridLayout19.ColumnWidth = {380, '1x'};
+            app.GridLayout19.RowHeight = {'1x'};
+            app.GridLayout19.Padding = [8 8 10 10];
+            app.GridLayout19.Layout.Row = 2;
+            app.GridLayout19.Layout.Column = 1;
+
+            % Create GridLayout20
+            app.GridLayout20 = uigridlayout(app.GridLayout19);
+            app.GridLayout20.ColumnWidth = {'1x'};
+            app.GridLayout20.RowHeight = {25, '1x', 60};
+            app.GridLayout20.RowSpacing = 6;
+            app.GridLayout20.Padding = [0 0 0 0];
+            app.GridLayout20.Layout.Row = 1;
+            app.GridLayout20.Layout.Column = 1;
+
+            % Create InputparametersLabel
+            app.InputparametersLabel = uilabel(app.GridLayout20);
+            app.InputparametersLabel.FontSize = 14;
+            app.InputparametersLabel.FontWeight = 'bold';
+            app.InputparametersLabel.Layout.Row = 1;
+            app.InputparametersLabel.Layout.Column = 1;
+            app.InputparametersLabel.Text = 'Input parameters';
+
+            % Create Panel_4
+            app.Panel_4 = uipanel(app.GridLayout20);
+            app.Panel_4.BorderColor = [0.9412 0.9412 0.9412];
+            app.Panel_4.HighlightColor = [0.9412 0.9412 0.9412];
+            app.Panel_4.Layout.Row = 2;
+            app.Panel_4.Layout.Column = 1;
+
+            % Create GridLayout21
+            app.GridLayout21 = uigridlayout(app.Panel_4);
+            app.GridLayout21.ColumnWidth = {220, '1x'};
+            app.GridLayout21.RowHeight = {30, 30, 30, 30, 30, 30, 30, 30, 30, '1x'};
+            app.GridLayout21.RowSpacing = 8;
+            app.GridLayout21.Padding = [5 5 0 0];
+
+            % Create FrequencybandDropDownLabel
+            app.FrequencybandDropDownLabel = uilabel(app.GridLayout21);
+            app.FrequencybandDropDownLabel.HorizontalAlignment = 'center';
+            app.FrequencybandDropDownLabel.Layout.Row = 1;
+            app.FrequencybandDropDownLabel.Layout.Column = 1;
+            app.FrequencybandDropDownLabel.Text = 'Frequency band:';
+
+            % Create FrequencybandDropDown
+            app.FrequencybandDropDown = uidropdown(app.GridLayout21);
+            app.FrequencybandDropDown.Items = {'UHF: 0.3-1 GHz', 'L-band: 1-2 GHz', 'S-band: 2-4 GHz', 'C-band: 4-8 GHz', 'X-band: 8-12 GHz', 'Ku-band: 12-18 GHz', 'K-band: 18-27 GHz', 'Ka-band: 27-40 GHz', 'V-band: 40-75 GHz', 'W-band: 75-110 GHz'};
+            app.FrequencybandDropDown.ValueChangedFcn = createCallbackFcn(app, @FrequencybandDropDownValueChanged, true);
+            app.FrequencybandDropDown.Layout.Row = 1;
+            app.FrequencybandDropDown.Layout.Column = 2;
+            app.FrequencybandDropDown.Value = 'UHF: 0.3-1 GHz';
+
+            % Create FrequencyGHzEditFieldLabel
+            app.FrequencyGHzEditFieldLabel = uilabel(app.GridLayout21);
+            app.FrequencyGHzEditFieldLabel.HorizontalAlignment = 'center';
+            app.FrequencyGHzEditFieldLabel.Layout.Row = 2;
+            app.FrequencyGHzEditFieldLabel.Layout.Column = 1;
+            app.FrequencyGHzEditFieldLabel.Text = 'Frequency (GHz):';
+
+            % Create FrequencyGHzEditField
+            app.FrequencyGHzEditField = uieditfield(app.GridLayout21, 'numeric');
+            app.FrequencyGHzEditField.ValueChangedFcn = createCallbackFcn(app, @FrequencyGHzEditFieldValueChanged, true);
+            app.FrequencyGHzEditField.HorizontalAlignment = 'left';
+            app.FrequencyGHzEditField.Layout.Row = 2;
+            app.FrequencyGHzEditField.Layout.Column = 2;
+
+            % Create IncidenceAngledegLabel
+            app.IncidenceAngledegLabel = uilabel(app.GridLayout21);
+            app.IncidenceAngledegLabel.HorizontalAlignment = 'center';
+            app.IncidenceAngledegLabel.Layout.Row = 3;
+            app.IncidenceAngledegLabel.Layout.Column = 1;
+            app.IncidenceAngledegLabel.Text = 'Incidence angle (deg.):';
+
+            % Create IncidenceangledegEditField
+            app.IncidenceangledegEditField = uieditfield(app.GridLayout21, 'numeric');
+            app.IncidenceangledegEditField.Limits = [0 100];
+            app.IncidenceangledegEditField.HorizontalAlignment = 'left';
+            app.IncidenceangledegEditField.Layout.Row = 3;
+            app.IncidenceangledegEditField.Layout.Column = 2;
+            app.IncidenceangledegEditField.Value = 30;
+
+            % Create PolarizationDropDown_2Label
+            app.PolarizationDropDown_2Label = uilabel(app.GridLayout21);
+            app.PolarizationDropDown_2Label.HorizontalAlignment = 'center';
+            app.PolarizationDropDown_2Label.Layout.Row = 5;
+            app.PolarizationDropDown_2Label.Layout.Column = 1;
+            app.PolarizationDropDown_2Label.Text = 'Polarization:';
+
+            % Create PolarizationDropDown_2
+            app.PolarizationDropDown_2 = uidropdown(app.GridLayout21);
+            app.PolarizationDropDown_2.Items = {'VV', 'HH', 'VH'};
+            app.PolarizationDropDown_2.ValueChangedFcn = createCallbackFcn(app, @PolarizationDropDown_2ValueChanged, true);
+            app.PolarizationDropDown_2.Layout.Row = 5;
+            app.PolarizationDropDown_2.Layout.Column = 2;
+            app.PolarizationDropDown_2.Value = 'VV';
+
+            % Create Windspeedu10msEditFieldLabel
+            app.Windspeedu10msEditFieldLabel = uilabel(app.GridLayout21);
+            app.Windspeedu10msEditFieldLabel.HorizontalAlignment = 'center';
+            app.Windspeedu10msEditFieldLabel.Layout.Row = 6;
+            app.Windspeedu10msEditFieldLabel.Layout.Column = 1;
+            app.Windspeedu10msEditFieldLabel.Text = 'Wind speed u10 (m/s):';
+
+            % Create Windspeedu10msEditField
+            app.Windspeedu10msEditField = uieditfield(app.GridLayout21, 'numeric');
+            app.Windspeedu10msEditField.HorizontalAlignment = 'left';
+            app.Windspeedu10msEditField.Layout.Row = 6;
+            app.Windspeedu10msEditField.Layout.Column = 2;
+            app.Windspeedu10msEditField.Value = 8;
+
+            % Create AngleRelativetoWinddirectiondegLabel
+            app.AngleRelativetoWinddirectiondegLabel = uilabel(app.GridLayout21);
+            app.AngleRelativetoWinddirectiondegLabel.HorizontalAlignment = 'center';
+            app.AngleRelativetoWinddirectiondegLabel.Layout.Row = 7;
+            app.AngleRelativetoWinddirectiondegLabel.Layout.Column = 1;
+            app.AngleRelativetoWinddirectiondegLabel.Text = 'Angle relative to wind direction (deg.):';
+
+            % Create AnglerelativetowinddirectiondegEditField
+            app.AnglerelativetowinddirectiondegEditField = uieditfield(app.GridLayout21, 'numeric');
+            app.AnglerelativetowinddirectiondegEditField.HorizontalAlignment = 'left';
+            app.AnglerelativetowinddirectiondegEditField.Layout.Row = 7;
+            app.AnglerelativetowinddirectiondegEditField.Layout.Column = 2;
+
+            % Create ModelDropDown_2Label
+            app.ModelDropDown_2Label = uilabel(app.GridLayout21);
+            app.ModelDropDown_2Label.HorizontalAlignment = 'center';
+            app.ModelDropDown_2Label.Layout.Row = 4;
+            app.ModelDropDown_2Label.Layout.Column = 1;
+            app.ModelDropDown_2Label.Text = 'Model:';
+
+            % Create ModelDropDown_2
+            app.ModelDropDown_2 = uidropdown(app.GridLayout21);
+            app.ModelDropDown_2.Items = {'Isoguchi', 'Meissner', 'Quilfen', 'CMOD2-I3', 'CMOD5', 'CMOD5N', 'XMOD1R', 'XMOD2N', 'Masuko X', 'Wentz84', 'Wentz99', 'Masuko Ka', 'NRL', 'TSC', 'GIT', 'HYBRID', 'RRE', 'SITTROP', 'TSM', 'GO1sh', 'SPM1'};
+            app.ModelDropDown_2.ValueChangedFcn = createCallbackFcn(app, @ModelDropDown_2ValueChanged, true);
+            app.ModelDropDown_2.Layout.Row = 4;
+            app.ModelDropDown_2.Layout.Column = 2;
+            app.ModelDropDown_2.Value = 'Isoguchi';
+
+            % Create FetchmEditField_2Label
+            app.FetchmEditField_2Label = uilabel(app.GridLayout21);
+            app.FetchmEditField_2Label.HorizontalAlignment = 'center';
+            app.FetchmEditField_2Label.Layout.Row = 8;
+            app.FetchmEditField_2Label.Layout.Column = 1;
+            app.FetchmEditField_2Label.Text = 'Fetch (m):';
+
+            % Create FetchmEditField_2
+            app.FetchmEditField_2 = uieditfield(app.GridLayout21, 'numeric');
+            app.FetchmEditField_2.HorizontalAlignment = 'left';
+            app.FetchmEditField_2.Layout.Row = 8;
+            app.FetchmEditField_2.Layout.Column = 2;
+            app.FetchmEditField_2.Value = Inf;
+
+            % Create kokcEditFieldLabel
+            app.kokcEditFieldLabel = uilabel(app.GridLayout21);
+            app.kokcEditFieldLabel.HorizontalAlignment = 'center';
+            app.kokcEditFieldLabel.Layout.Row = 9;
+            app.kokcEditFieldLabel.Layout.Column = 1;
+            app.kokcEditFieldLabel.Text = 'ko/kc :';
+
+            % Create kokcEditField
+            app.kokcEditField = uieditfield(app.GridLayout21, 'numeric');
+            app.kokcEditField.HorizontalAlignment = 'left';
+            app.kokcEditField.Layout.Row = 9;
+            app.kokcEditField.Layout.Column = 2;
+            app.kokcEditField.Value = 4;
+
+            % Create ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel = uilabel(app.GridLayout20);
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel.HorizontalAlignment = 'center';
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel.WordWrap = 'on';
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel.FontWeight = 'bold';
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel.Layout.Row = 3;
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel.Layout.Column = 1;
+            app.ValidrangesIncidenceangle080Frequency01100GHzWindspeedu10025msLabel.Text = 'Valid ranges: Incidence angle 0°–80°, Frequency 0.1–100 GHz, Wind speed u10 0–25 m/s, ...';
+
+            % Create GridLayout22
+            app.GridLayout22 = uigridlayout(app.GridLayout19);
+            app.GridLayout22.ColumnWidth = {'1x'};
+            app.GridLayout22.RowHeight = {'1x', 120};
+            app.GridLayout22.RowSpacing = 8;
+            app.GridLayout22.Padding = [0 0 0 0];
+            app.GridLayout22.Layout.Row = 1;
+            app.GridLayout22.Layout.Column = 2;
+
+            % Create UIAxes3
+            app.UIAxes3 = uiaxes(app.GridLayout22);
+            title(app.UIAxes3, 'NRCS curves')
+            xlabel(app.UIAxes3, 'Incidence angle (deg)')
+            ylabel(app.UIAxes3, 'NRCS (dB)')
+            zlabel(app.UIAxes3, 'Z')
+            app.UIAxes3.XGrid = 'on';
+            app.UIAxes3.YGrid = 'on';
+            app.UIAxes3.Layout.Row = 1;
+            app.UIAxes3.Layout.Column = 1;
+
+            % Create ResultsPanel
+            app.ResultsPanel = uipanel(app.GridLayout22);
+            app.ResultsPanel.TitlePosition = 'centertop';
+            app.ResultsPanel.Title = 'Results';
+            app.ResultsPanel.BackgroundColor = [0.9412 0.9412 0.9412];
+            app.ResultsPanel.Layout.Row = 2;
+            app.ResultsPanel.Layout.Column = 1;
+
+            % Create NRCS905dBfor300incidenceangleLabel
+            app.NRCS905dBfor300incidenceangleLabel = uilabel(app.ResultsPanel);
+            app.NRCS905dBfor300incidenceangleLabel.HorizontalAlignment = 'center';
+            app.NRCS905dBfor300incidenceangleLabel.VerticalAlignment = 'top';
+            app.NRCS905dBfor300incidenceangleLabel.WordWrap = 'on';
+            app.NRCS905dBfor300incidenceangleLabel.FontSize = 14;
+            app.NRCS905dBfor300incidenceangleLabel.Position = [91 32 348 57];
+            app.NRCS905dBfor300incidenceangleLabel.Text = 'NRCS: -9.05 dB (for 30.0° incidence angle)';
+
+            % Create GridLayout23
+            app.GridLayout23 = uigridlayout(app.GridLayout17);
+            app.GridLayout23.ColumnWidth = {'1x', '1x', '1x', '1x'};
+            app.GridLayout23.RowHeight = {'1x'};
+            app.GridLayout23.Padding = [8 8 10 10];
+            app.GridLayout23.Layout.Row = 3;
+            app.GridLayout23.Layout.Column = 1;
+
+            % Create CalculateButton_2
+            app.CalculateButton_2 = uibutton(app.GridLayout23, 'push');
+            app.CalculateButton_2.ButtonPushedFcn = createCallbackFcn(app, @CalculateButton_2Pushed, true);
+            app.CalculateButton_2.FontWeight = 'bold';
+            app.CalculateButton_2.Layout.Row = 1;
+            app.CalculateButton_2.Layout.Column = 1;
+            app.CalculateButton_2.Text = 'Calculate';
+
+            % Create OverlayButton_2
+            app.OverlayButton_2 = uibutton(app.GridLayout23, 'push');
+            app.OverlayButton_2.ButtonPushedFcn = createCallbackFcn(app, @OverlayButton_2Pushed, true);
+            app.OverlayButton_2.FontWeight = 'bold';
+            app.OverlayButton_2.Layout.Row = 1;
+            app.OverlayButton_2.Layout.Column = 2;
+            app.OverlayButton_2.Text = 'Overlay';
+
+            % Create ClearButton_2
+            app.ClearButton_2 = uibutton(app.GridLayout23, 'push');
+            app.ClearButton_2.ButtonPushedFcn = createCallbackFcn(app, @ClearButton_2Pushed, true);
+            app.ClearButton_2.FontWeight = 'bold';
+            app.ClearButton_2.Layout.Row = 1;
+            app.ClearButton_2.Layout.Column = 3;
+            app.ClearButton_2.Text = 'Clear';
+
+            % Create ExportButton_2
+            app.ExportButton_2 = uibutton(app.GridLayout23, 'push');
+            app.ExportButton_2.ButtonPushedFcn = createCallbackFcn(app, @ExportButton_2Pushed, true);
+            app.ExportButton_2.FontWeight = 'bold';
+            app.ExportButton_2.Layout.Row = 1;
+            app.ExportButton_2.Layout.Column = 4;
+            app.ExportButton_2.Text = 'Export';
+
+            % Create GenerationofSeaSurfaceTab
+            app.GenerationofSeaSurfaceTab = uitab(app.TabGroup);
+            app.GenerationofSeaSurfaceTab.Title = 'Generation of Sea Surface ';
+
+            % Create GridLayout9
+            app.GridLayout9 = uigridlayout(app.GenerationofSeaSurfaceTab);
+            app.GridLayout9.ColumnWidth = {'1x'};
+            app.GridLayout9.RowHeight = {50, '1x'};
+            app.GridLayout9.RowSpacing = 4;
+            app.GridLayout9.Padding = [8 0 10 10];
+
+            % Create GridLayout10
+            app.GridLayout10 = uigridlayout(app.GridLayout9);
+            app.GridLayout10.ColumnWidth = {'1x'};
+            app.GridLayout10.RowHeight = {'1x'};
+            app.GridLayout10.ColumnSpacing = 1;
+            app.GridLayout10.RowSpacing = 2;
+            app.GridLayout10.Padding = [0 0 0 0];
+            app.GridLayout10.Layout.Row = 1;
+            app.GridLayout10.Layout.Column = 1;
+
+            % Create GridLayout24
+            app.GridLayout24 = uigridlayout(app.GridLayout10);
+            app.GridLayout24.ColumnWidth = {'1x', 90, 90};
+            app.GridLayout24.RowHeight = {'1x'};
+            app.GridLayout24.ColumnSpacing = 8;
+            app.GridLayout24.Padding = [5 5 10 10];
+            app.GridLayout24.Layout.Row = 1;
+            app.GridLayout24.Layout.Column = 1;
+
+            % Create SeaProfileRadarSimulatorLabel
+            app.SeaProfileRadarSimulatorLabel = uilabel(app.GridLayout24);
+            app.SeaProfileRadarSimulatorLabel.FontSize = 16;
+            app.SeaProfileRadarSimulatorLabel.FontWeight = 'bold';
+            app.SeaProfileRadarSimulatorLabel.Layout.Row = 1;
+            app.SeaProfileRadarSimulatorLabel.Layout.Column = 1;
+            app.SeaProfileRadarSimulatorLabel.Text = 'Sea Profile Radar Simulator';
+
+            % Create Image5
+            app.Image5 = uiimage(app.GridLayout24);
+            app.Image5.Layout.Row = 1;
+            app.Image5.Layout.Column = 2;
+            app.Image5.ImageSource = fullfile(pathToMLAPP, 'logo_icam.png');
+
+            % Create Image6
+            app.Image6 = uiimage(app.GridLayout24);
+            app.Image6.Layout.Row = 1;
+            app.Image6.Layout.Column = 3;
+            app.Image6.ImageSource = fullfile(pathToMLAPP, 'logo_ietr.png');
+
+            % Create GridLayout11
+            app.GridLayout11 = uigridlayout(app.GridLayout9);
+            app.GridLayout11.ColumnWidth = {480, '1x'};
+            app.GridLayout11.RowHeight = {'1x'};
+            app.GridLayout11.Padding = [0 0 0 0];
+            app.GridLayout11.Layout.Row = 2;
+            app.GridLayout11.Layout.Column = 1;
+
+            % Create GridLayout12
+            app.GridLayout12 = uigridlayout(app.GridLayout11);
+            app.GridLayout12.ColumnWidth = {'1x'};
+            app.GridLayout12.RowHeight = {'fit', '1x'};
+            app.GridLayout12.RowSpacing = 8;
+            app.GridLayout12.Padding = [0 0 0 0];
+            app.GridLayout12.Layout.Row = 1;
+            app.GridLayout12.Layout.Column = 1;
+
+            % Create GridLayout13
+            app.GridLayout13 = uigridlayout(app.GridLayout12);
+            app.GridLayout13.ColumnWidth = {250, '1x'};
+            app.GridLayout13.RowHeight = {27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27};
+            app.GridLayout13.ColumnSpacing = 6;
+            app.GridLayout13.RowSpacing = 4;
+            app.GridLayout13.Layout.Row = 1;
+            app.GridLayout13.Layout.Column = 1;
+
+            % Create Windspeedu10msEditField_2Label
+            app.Windspeedu10msEditField_2Label = uilabel(app.GridLayout13);
+            app.Windspeedu10msEditField_2Label.HorizontalAlignment = 'center';
+            app.Windspeedu10msEditField_2Label.Layout.Row = 2;
+            app.Windspeedu10msEditField_2Label.Layout.Column = 1;
+            app.Windspeedu10msEditField_2Label.Text = 'Wind speed u10 (m/s):';
+
+            % Create Windspeedu10msEditField_2
+            app.Windspeedu10msEditField_2 = uieditfield(app.GridLayout13, 'numeric');
+            app.Windspeedu10msEditField_2.Limits = [0 100];
+            app.Windspeedu10msEditField_2.Layout.Row = 2;
+            app.Windspeedu10msEditField_2.Layout.Column = 2;
+            app.Windspeedu10msEditField_2.Value = 3;
+
+            % Create WinddirectiondegEditFieldLabel
+            app.WinddirectiondegEditFieldLabel = uilabel(app.GridLayout13);
+            app.WinddirectiondegEditFieldLabel.HorizontalAlignment = 'center';
+            app.WinddirectiondegEditFieldLabel.Layout.Row = 3;
+            app.WinddirectiondegEditFieldLabel.Layout.Column = 1;
+            app.WinddirectiondegEditFieldLabel.Text = 'Wind direction (deg):';
+
+            % Create WinddirectiondegEditField
+            app.WinddirectiondegEditField = uieditfield(app.GridLayout13, 'numeric');
+            app.WinddirectiondegEditField.Limits = [0 100];
+            app.WinddirectiondegEditField.Layout.Row = 3;
+            app.WinddirectiondegEditField.Layout.Column = 2;
+
+            % Create FetchmEditFieldLabel
+            app.FetchmEditFieldLabel = uilabel(app.GridLayout13);
+            app.FetchmEditFieldLabel.HorizontalAlignment = 'center';
+            app.FetchmEditFieldLabel.Layout.Row = 6;
+            app.FetchmEditFieldLabel.Layout.Column = 1;
+            app.FetchmEditFieldLabel.Text = 'Fetch (m):';
+
+            % Create FetchmEditField
+            app.FetchmEditField = uieditfield(app.GridLayout13, 'numeric');
+            app.FetchmEditField.Layout.Row = 6;
+            app.FetchmEditField.Layout.Column = 2;
+            app.FetchmEditField.Value = 500000;
+
+            % Create LengthXmEditFieldLabel
+            app.LengthXmEditFieldLabel = uilabel(app.GridLayout13);
+            app.LengthXmEditFieldLabel.HorizontalAlignment = 'center';
+            app.LengthXmEditFieldLabel.Layout.Row = 7;
+            app.LengthXmEditFieldLabel.Layout.Column = 1;
+            app.LengthXmEditFieldLabel.Text = 'Length X (m):';
+
+            % Create LengthXmEditField
+            app.LengthXmEditField = uieditfield(app.GridLayout13, 'numeric');
+            app.LengthXmEditField.Limits = [0 100];
+            app.LengthXmEditField.Layout.Row = 7;
+            app.LengthXmEditField.Layout.Column = 2;
+            app.LengthXmEditField.Value = 40;
+
+            % Create LengthYmEditFieldLabel
+            app.LengthYmEditFieldLabel = uilabel(app.GridLayout13);
+            app.LengthYmEditFieldLabel.HorizontalAlignment = 'center';
+            app.LengthYmEditFieldLabel.Layout.Row = 8;
+            app.LengthYmEditFieldLabel.Layout.Column = 1;
+            app.LengthYmEditFieldLabel.Text = 'Length Y (m):';
+
+            % Create LengthYmEditField
+            app.LengthYmEditField = uieditfield(app.GridLayout13, 'numeric');
+            app.LengthYmEditField.Layout.Row = 8;
+            app.LengthYmEditField.Layout.Column = 2;
+            app.LengthYmEditField.Value = 30;
+
+            % Create RadarFrequencyGHz130GHz2308cmLabel
+            app.RadarFrequencyGHz130GHz2308cmLabel = uilabel(app.GridLayout13);
+            app.RadarFrequencyGHz130GHz2308cmLabel.HorizontalAlignment = 'center';
+            app.RadarFrequencyGHz130GHz2308cmLabel.Layout.Row = 9;
+            app.RadarFrequencyGHz130GHz2308cmLabel.Layout.Column = 1;
+            app.RadarFrequencyGHz130GHz2308cmLabel.Text = {'Radar frequency (GHz): '; '1.30 GHz → λ = 23.08 cm'};
+
+            % Create RadarfrequencyGHz130GHz2308cmEditField
+            app.RadarfrequencyGHz130GHz2308cmEditField = uieditfield(app.GridLayout13, 'numeric');
+            app.RadarfrequencyGHz130GHz2308cmEditField.Layout.Row = 9;
+            app.RadarfrequencyGHz130GHz2308cmEditField.Layout.Column = 2;
+            app.RadarfrequencyGHz130GHz2308cmEditField.Value = 1.3;
+
+            % Create PrecisionLabel
+            app.PrecisionLabel = uilabel(app.GridLayout13);
+            app.PrecisionLabel.HorizontalAlignment = 'center';
+            app.PrecisionLabel.Layout.Row = 12;
+            app.PrecisionLabel.Layout.Column = 1;
+            app.PrecisionLabel.Text = 'Precision:';
+
+            % Create UsesingleprecisionCheckBox
+            app.UsesingleprecisionCheckBox = uicheckbox(app.GridLayout13);
+            app.UsesingleprecisionCheckBox.Text = 'Use single precision';
+            app.UsesingleprecisionCheckBox.Layout.Row = 12;
+            app.UsesingleprecisionCheckBox.Layout.Column = 2;
+
+            % Create SamplesperwavelengthEditFieldLabel
+            app.SamplesperwavelengthEditFieldLabel = uilabel(app.GridLayout13);
+            app.SamplesperwavelengthEditFieldLabel.HorizontalAlignment = 'center';
+            app.SamplesperwavelengthEditFieldLabel.Layout.Row = 10;
+            app.SamplesperwavelengthEditFieldLabel.Layout.Column = 1;
+            app.SamplesperwavelengthEditFieldLabel.Text = 'Samples per wavelength (-):';
+
+            % Create SamplesperwavelengthEditField
+            app.SamplesperwavelengthEditField = uieditfield(app.GridLayout13, 'numeric');
+            app.SamplesperwavelengthEditField.Layout.Row = 10;
+            app.SamplesperwavelengthEditField.Layout.Column = 2;
+            app.SamplesperwavelengthEditField.Value = 8;
+
+            % Create SeasurfaceparametersLabel
+            app.SeasurfaceparametersLabel = uilabel(app.GridLayout13);
+            app.SeasurfaceparametersLabel.FontSize = 14;
+            app.SeasurfaceparametersLabel.FontWeight = 'bold';
+            app.SeasurfaceparametersLabel.Layout.Row = 1;
+            app.SeasurfaceparametersLabel.Layout.Column = [1 2];
+            app.SeasurfaceparametersLabel.Text = 'Sea surface parameters';
+
+            % Create NumberofsamplesEditField_2Label
+            app.NumberofsamplesEditField_2Label = uilabel(app.GridLayout13);
+            app.NumberofsamplesEditField_2Label.HorizontalAlignment = 'center';
+            app.NumberofsamplesEditField_2Label.Layout.Row = 11;
+            app.NumberofsamplesEditField_2Label.Layout.Column = 1;
+            app.NumberofsamplesEditField_2Label.Text = 'Number of samples: ';
+
+            % Create NumberofsamplesEditField_2
+            app.NumberofsamplesEditField_2 = uieditfield(app.GridLayout13, 'numeric');
+            app.NumberofsamplesEditField_2.Layout.Row = 11;
+            app.NumberofsamplesEditField_2.Layout.Column = 2;
+
+            % Create RoundtotheNearestPowerof2CheckBox_2
+            app.RoundtotheNearestPowerof2CheckBox_2 = uicheckbox(app.GridLayout13);
+            app.RoundtotheNearestPowerof2CheckBox_2.Text = 'Round to the Nearest Power of 2';
+            app.RoundtotheNearestPowerof2CheckBox_2.WordWrap = 'on';
+            app.RoundtotheNearestPowerof2CheckBox_2.Layout.Row = 13;
+            app.RoundtotheNearestPowerof2CheckBox_2.Layout.Column = 2;
+
+            % Create RoundlengthLabel_2
+            app.RoundlengthLabel_2 = uilabel(app.GridLayout13);
+            app.RoundlengthLabel_2.HorizontalAlignment = 'center';
+            app.RoundlengthLabel_2.Layout.Row = 13;
+            app.RoundlengthLabel_2.Layout.Column = 1;
+            app.RoundlengthLabel_2.Text = 'Round length:';
+
+            % Create IsotropicspectrumDropDownLabel
+            app.IsotropicspectrumDropDownLabel = uilabel(app.GridLayout13);
+            app.IsotropicspectrumDropDownLabel.HorizontalAlignment = 'center';
+            app.IsotropicspectrumDropDownLabel.Layout.Row = 4;
+            app.IsotropicspectrumDropDownLabel.Layout.Column = 1;
+            app.IsotropicspectrumDropDownLabel.Text = 'Isotropic spectrum';
+
+            % Create IsotropicspectrumDropDown
+            app.IsotropicspectrumDropDown = uidropdown(app.GridLayout13);
+            app.IsotropicspectrumDropDown.Items = {'Apel ', 'Elfouhaily', 'Donelan'};
+            app.IsotropicspectrumDropDown.Layout.Row = 4;
+            app.IsotropicspectrumDropDown.Layout.Column = 2;
+            app.IsotropicspectrumDropDown.Value = 'Apel ';
+
+            % Create AngularspectrumDropDownLabel
+            app.AngularspectrumDropDownLabel = uilabel(app.GridLayout13);
+            app.AngularspectrumDropDownLabel.HorizontalAlignment = 'center';
+            app.AngularspectrumDropDownLabel.Layout.Row = 5;
+            app.AngularspectrumDropDownLabel.Layout.Column = 1;
+            app.AngularspectrumDropDownLabel.Text = 'Angular spectrum';
+
+            % Create AngularspectrumDropDown
+            app.AngularspectrumDropDown = uidropdown(app.GridLayout13);
+            app.AngularspectrumDropDown.Items = {'Elfouhaily', 'Du', 'Donelan', 'Banner', 'McDaniel'};
+            app.AngularspectrumDropDown.Layout.Row = 5;
+            app.AngularspectrumDropDown.Layout.Column = 2;
+            app.AngularspectrumDropDown.Value = 'Elfouhaily';
+
+            % Create GridLayout14
+            app.GridLayout14 = uigridlayout(app.GridLayout12);
+            app.GridLayout14.ColumnWidth = {'1x'};
+            app.GridLayout14.RowHeight = {'1x', '1x', '1x'};
+            app.GridLayout14.RowSpacing = 6;
+            app.GridLayout14.Padding = [0 0 0 0];
+            app.GridLayout14.Layout.Row = 2;
+            app.GridLayout14.Layout.Column = 1;
+
+            % Create GenerateSurfaceButton
+            app.GenerateSurfaceButton = uibutton(app.GridLayout14, 'push');
+            app.GenerateSurfaceButton.ButtonPushedFcn = createCallbackFcn(app, @GenerateSurfaceButtonPushed, true);
+            app.GenerateSurfaceButton.Layout.Row = 1;
+            app.GenerateSurfaceButton.Layout.Column = 1;
+            app.GenerateSurfaceButton.Text = 'Generate Surface';
+
+            % Create ClearSurfaceButton
+            app.ClearSurfaceButton = uibutton(app.GridLayout14, 'push');
+            app.ClearSurfaceButton.ButtonPushedFcn = createCallbackFcn(app, @ClearSurfaceButtonPushed, true);
+            app.ClearSurfaceButton.Layout.Row = 2;
+            app.ClearSurfaceButton.Layout.Column = 1;
+            app.ClearSurfaceButton.Text = 'Clear Surface';
+
+            % Create ExportSurfaceButton
+            app.ExportSurfaceButton = uibutton(app.GridLayout14, 'push');
+            app.ExportSurfaceButton.ButtonPushedFcn = createCallbackFcn(app, @ExportSurfaceButtonPushed, true);
+            app.ExportSurfaceButton.Layout.Row = 3;
+            app.ExportSurfaceButton.Layout.Column = 1;
+            app.ExportSurfaceButton.Text = 'Export Surface';
+
+            % Create Panel_3
+            app.Panel_3 = uipanel(app.GridLayout11);
+            app.Panel_3.BorderColor = [0.9412 0.9412 0.9412];
+            app.Panel_3.HighlightColor = [0.9412 0.9412 0.9412];
+            app.Panel_3.Layout.Row = 1;
+            app.Panel_3.Layout.Column = 2;
+            app.Panel_3.FontWeight = 'bold';
+
+            % Create GridLayout15
+            app.GridLayout15 = uigridlayout(app.Panel_3);
+            app.GridLayout15.ColumnWidth = {'1x'};
+            app.GridLayout15.RowHeight = {'1x', 130};
+            app.GridLayout15.RowSpacing = 8;
+            app.GridLayout15.Padding = [0 0 0 0];
+
+            % Create UIAxes2
+            app.UIAxes2 = uiaxes(app.GridLayout15);
+            xlabel(app.UIAxes2, 'X (m)')
+            ylabel(app.UIAxes2, 'Y (m)')
+            zlabel(app.UIAxes2, 'Z')
+            app.UIAxes2.Box = 'on';
+            app.UIAxes2.Layout.Row = 1;
+            app.UIAxes2.Layout.Column = 1;
+
+            % Create SurfacestatisticsPanel
+            app.SurfacestatisticsPanel = uipanel(app.GridLayout15);
+            app.SurfacestatisticsPanel.TitlePosition = 'centertop';
+            app.SurfacestatisticsPanel.Title = 'Surface statistics';
+            app.SurfacestatisticsPanel.BackgroundColor = [0.9412 0.9412 0.9412];
+            app.SurfacestatisticsPanel.Layout.Row = 2;
+            app.SurfacestatisticsPanel.Layout.Column = 1;
+            app.SurfacestatisticsPanel.FontWeight = 'bold';
+            app.SurfacestatisticsPanel.FontSize = 14;
+
+            % Create GridLayout16
+            app.GridLayout16 = uigridlayout(app.SurfacestatisticsPanel);
+            app.GridLayout16.ColumnWidth = {80, '1x', 80, '1x'};
+            app.GridLayout16.ColumnSpacing = 6;
+            app.GridLayout16.RowSpacing = 8;
+
+            % Create ZminLabel
+            app.ZminLabel = uilabel(app.GridLayout16);
+            app.ZminLabel.HorizontalAlignment = 'center';
+            app.ZminLabel.FontWeight = 'bold';
+            app.ZminLabel.Layout.Row = 1;
+            app.ZminLabel.Layout.Column = 1;
+            app.ZminLabel.Text = 'Zmin';
+
+            % Create Label
+            app.Label = uilabel(app.GridLayout16);
+            app.Label.BackgroundColor = [0.8 0.8 0.8];
+            app.Label.HorizontalAlignment = 'center';
+            app.Label.FontWeight = 'bold';
+            app.Label.Layout.Row = 1;
+            app.Label.Layout.Column = 2;
+            app.Label.Text = '';
+
+            % Create ZmeanLabel
+            app.ZmeanLabel = uilabel(app.GridLayout16);
+            app.ZmeanLabel.HorizontalAlignment = 'center';
+            app.ZmeanLabel.FontWeight = 'bold';
+            app.ZmeanLabel.Layout.Row = 2;
+            app.ZmeanLabel.Layout.Column = 1;
+            app.ZmeanLabel.Text = 'Zmean';
+
+            % Create ZmaxLabel
+            app.ZmaxLabel = uilabel(app.GridLayout16);
+            app.ZmaxLabel.HorizontalAlignment = 'center';
+            app.ZmaxLabel.FontWeight = 'bold';
+            app.ZmaxLabel.Layout.Row = 1;
+            app.ZmaxLabel.Layout.Column = 3;
+            app.ZmaxLabel.Text = 'Zmax';
+
+            % Create ZstdLabel
+            app.ZstdLabel = uilabel(app.GridLayout16);
+            app.ZstdLabel.HorizontalAlignment = 'center';
+            app.ZstdLabel.FontWeight = 'bold';
+            app.ZstdLabel.Layout.Row = 2;
+            app.ZstdLabel.Layout.Column = 3;
+            app.ZstdLabel.Text = 'Zstd';
+
+            % Create Label_2
+            app.Label_2 = uilabel(app.GridLayout16);
+            app.Label_2.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_2.HorizontalAlignment = 'center';
+            app.Label_2.FontWeight = 'bold';
+            app.Label_2.Layout.Row = 2;
+            app.Label_2.Layout.Column = 2;
+            app.Label_2.Text = '';
+
+            % Create Label_3
+            app.Label_3 = uilabel(app.GridLayout16);
+            app.Label_3.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_3.HorizontalAlignment = 'center';
+            app.Label_3.FontWeight = 'bold';
+            app.Label_3.Layout.Row = 1;
+            app.Label_3.Layout.Column = 4;
+            app.Label_3.Text = '';
+
+            % Create Label_4
+            app.Label_4 = uilabel(app.GridLayout16);
+            app.Label_4.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_4.HorizontalAlignment = 'center';
+            app.Label_4.FontWeight = 'bold';
+            app.Label_4.Layout.Row = 2;
+            app.Label_4.Layout.Column = 4;
+            app.Label_4.Text = '';
+
+            % Create GenerationofSeaProfilesTab
+            app.GenerationofSeaProfilesTab = uitab(app.TabGroup);
+            app.GenerationofSeaProfilesTab.Title = 'Generation of Sea Profiles ';
+
+            % Create GridLayout25
+            app.GridLayout25 = uigridlayout(app.GenerationofSeaProfilesTab);
+            app.GridLayout25.ColumnWidth = {'1x'};
+            app.GridLayout25.RowHeight = {50, '1x'};
+            app.GridLayout25.RowSpacing = 4;
+            app.GridLayout25.Padding = [8 0 10 10];
+
+            % Create GridLayout26
+            app.GridLayout26 = uigridlayout(app.GridLayout25);
+            app.GridLayout26.ColumnWidth = {'1x', 90, 90};
+            app.GridLayout26.RowHeight = {'1x'};
+            app.GridLayout26.ColumnSpacing = 8;
+            app.GridLayout26.Padding = [5 5 10 10];
+            app.GridLayout26.Layout.Row = 1;
+            app.GridLayout26.Layout.Column = 1;
+
+            % Create GenerationofSeaProfilesLabel
+            app.GenerationofSeaProfilesLabel = uilabel(app.GridLayout26);
+            app.GenerationofSeaProfilesLabel.FontSize = 18;
+            app.GenerationofSeaProfilesLabel.FontWeight = 'bold';
+            app.GenerationofSeaProfilesLabel.Layout.Row = 1;
+            app.GenerationofSeaProfilesLabel.Layout.Column = 1;
+            app.GenerationofSeaProfilesLabel.Text = 'Generation of Sea Profiles';
+
+            % Create Image7
+            app.Image7 = uiimage(app.GridLayout26);
+            app.Image7.Layout.Row = 1;
+            app.Image7.Layout.Column = 2;
+            app.Image7.ImageSource = fullfile(pathToMLAPP, 'logo_icam.png');
+
+            % Create Image8
+            app.Image8 = uiimage(app.GridLayout26);
+            app.Image8.Layout.Row = 1;
+            app.Image8.Layout.Column = 3;
+            app.Image8.ImageSource = fullfile(pathToMLAPP, 'logo_ietr.png');
+
+            % Create GridLayout27
+            app.GridLayout27 = uigridlayout(app.GridLayout25);
+            app.GridLayout27.ColumnWidth = {480, '1x'};
+            app.GridLayout27.RowHeight = {'1x'};
+            app.GridLayout27.Padding = [0 0 0 0];
+            app.GridLayout27.Layout.Row = 2;
+            app.GridLayout27.Layout.Column = 1;
+
+            % Create GridLayout28
+            app.GridLayout28 = uigridlayout(app.GridLayout27);
+            app.GridLayout28.ColumnWidth = {'1x'};
+            app.GridLayout28.RowHeight = {'fit', '1x'};
+            app.GridLayout28.RowSpacing = 8;
+            app.GridLayout28.Padding = [0 0 0 0];
+            app.GridLayout28.Layout.Row = 1;
+            app.GridLayout28.Layout.Column = 1;
+
+            % Create GridLayout29
+            app.GridLayout29 = uigridlayout(app.GridLayout28);
+            app.GridLayout29.ColumnWidth = {250, '1x'};
+            app.GridLayout29.RowHeight = {29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29};
+            app.GridLayout29.Layout.Row = 1;
+            app.GridLayout29.Layout.Column = 1;
+
+            % Create SeaprofileparametersLabel
+            app.SeaprofileparametersLabel = uilabel(app.GridLayout29);
+            app.SeaprofileparametersLabel.FontSize = 14;
+            app.SeaprofileparametersLabel.FontWeight = 'bold';
+            app.SeaprofileparametersLabel.Layout.Row = 1;
+            app.SeaprofileparametersLabel.Layout.Column = [1 2];
+            app.SeaprofileparametersLabel.Text = 'Sea profile parameters';
+
+            % Create Windspeedu10msEditField_3Label
+            app.Windspeedu10msEditField_3Label = uilabel(app.GridLayout29);
+            app.Windspeedu10msEditField_3Label.HorizontalAlignment = 'center';
+            app.Windspeedu10msEditField_3Label.Layout.Row = 2;
+            app.Windspeedu10msEditField_3Label.Layout.Column = 1;
+            app.Windspeedu10msEditField_3Label.Text = 'Wind speed u10 (m/s):';
+
+            % Create Windspeedu10msEditField_3
+            app.Windspeedu10msEditField_3 = uieditfield(app.GridLayout29, 'numeric');
+            app.Windspeedu10msEditField_3.Layout.Row = 2;
+            app.Windspeedu10msEditField_3.Layout.Column = 2;
+
+            % Create FetchmEditField_3Label
+            app.FetchmEditField_3Label = uilabel(app.GridLayout29);
+            app.FetchmEditField_3Label.HorizontalAlignment = 'center';
+            app.FetchmEditField_3Label.Layout.Row = 4;
+            app.FetchmEditField_3Label.Layout.Column = 1;
+            app.FetchmEditField_3Label.Text = 'Fetch (m):';
+
+            % Create FetchmEditField_3
+            app.FetchmEditField_3 = uieditfield(app.GridLayout29, 'numeric');
+            app.FetchmEditField_3.Layout.Row = 4;
+            app.FetchmEditField_3.Layout.Column = 2;
+
+            % Create LengthmEditFieldLabel
+            app.LengthmEditFieldLabel = uilabel(app.GridLayout29);
+            app.LengthmEditFieldLabel.HorizontalAlignment = 'center';
+            app.LengthmEditFieldLabel.Layout.Row = 5;
+            app.LengthmEditFieldLabel.Layout.Column = 1;
+            app.LengthmEditFieldLabel.Text = 'Length (m):';
+
+            % Create LengthmEditField
+            app.LengthmEditField = uieditfield(app.GridLayout29, 'numeric');
+            app.LengthmEditField.Layout.Row = 5;
+            app.LengthmEditField.Layout.Column = 2;
+
+            % Create RadarfrequencyGHz130GHz2308cmLabel
+            app.RadarfrequencyGHz130GHz2308cmLabel = uilabel(app.GridLayout29);
+            app.RadarfrequencyGHz130GHz2308cmLabel.HorizontalAlignment = 'center';
+            app.RadarfrequencyGHz130GHz2308cmLabel.Layout.Row = 6;
+            app.RadarfrequencyGHz130GHz2308cmLabel.Layout.Column = 1;
+            app.RadarfrequencyGHz130GHz2308cmLabel.Text = {'Radar frequency (GHz): '; '1.30 GHz → λ = 23.08 cm'};
+
+            % Create RadarfrequencyGHz130GHz2308cmEditField_2
+            app.RadarfrequencyGHz130GHz2308cmEditField_2 = uieditfield(app.GridLayout29, 'numeric');
+            app.RadarfrequencyGHz130GHz2308cmEditField_2.Layout.Row = 6;
+            app.RadarfrequencyGHz130GHz2308cmEditField_2.Layout.Column = 2;
+            app.RadarfrequencyGHz130GHz2308cmEditField_2.Value = 2;
+
+            % Create SamplesperwavelengthEditField_2Label
+            app.SamplesperwavelengthEditField_2Label = uilabel(app.GridLayout29);
+            app.SamplesperwavelengthEditField_2Label.HorizontalAlignment = 'center';
+            app.SamplesperwavelengthEditField_2Label.Layout.Row = 7;
+            app.SamplesperwavelengthEditField_2Label.Layout.Column = 1;
+            app.SamplesperwavelengthEditField_2Label.Text = 'Samples per wavelength (-):';
+
+            % Create SamplesperwavelengthEditField_2
+            app.SamplesperwavelengthEditField_2 = uieditfield(app.GridLayout29, 'numeric');
+            app.SamplesperwavelengthEditField_2.Layout.Row = 7;
+            app.SamplesperwavelengthEditField_2.Layout.Column = 2;
+
+            % Create UsesingleprecisionCheckBox_2
+            app.UsesingleprecisionCheckBox_2 = uicheckbox(app.GridLayout29);
+            app.UsesingleprecisionCheckBox_2.Text = 'Use single precision';
+            app.UsesingleprecisionCheckBox_2.Layout.Row = 9;
+            app.UsesingleprecisionCheckBox_2.Layout.Column = 2;
+
+            % Create PrecisionLabel_2
+            app.PrecisionLabel_2 = uilabel(app.GridLayout29);
+            app.PrecisionLabel_2.HorizontalAlignment = 'center';
+            app.PrecisionLabel_2.Layout.Row = 9;
+            app.PrecisionLabel_2.Layout.Column = 1;
+            app.PrecisionLabel_2.Text = 'Precision:';
+
+            % Create NprofilesLabel
+            app.NprofilesLabel = uilabel(app.GridLayout29);
+            app.NprofilesLabel.HorizontalAlignment = 'center';
+            app.NprofilesLabel.Layout.Row = 11;
+            app.NprofilesLabel.Layout.Column = 1;
+            app.NprofilesLabel.Text = 'Nprofiles:';
+
+            % Create NprofilesEditField
+            app.NprofilesEditField = uieditfield(app.GridLayout29, 'numeric');
+            app.NprofilesEditField.Layout.Row = 11;
+            app.NprofilesEditField.Layout.Column = 2;
+
+            % Create Roundtothenearestpowerof2CheckBox
+            app.Roundtothenearestpowerof2CheckBox = uicheckbox(app.GridLayout29);
+            app.Roundtothenearestpowerof2CheckBox.Text = 'Round to the nearest power of 2';
+            app.Roundtothenearestpowerof2CheckBox.WordWrap = 'on';
+            app.Roundtothenearestpowerof2CheckBox.Layout.Row = 10;
+            app.Roundtothenearestpowerof2CheckBox.Layout.Column = 2;
+
+            % Create RoundlengthLabel
+            app.RoundlengthLabel = uilabel(app.GridLayout29);
+            app.RoundlengthLabel.HorizontalAlignment = 'center';
+            app.RoundlengthLabel.Layout.Row = 10;
+            app.RoundlengthLabel.Layout.Column = 1;
+            app.RoundlengthLabel.Text = 'Round length:';
+
+            % Create N_smLabel
+            app.N_smLabel = uilabel(app.GridLayout29);
+            app.N_smLabel.HorizontalAlignment = 'center';
+            app.N_smLabel.Layout.Row = 8;
+            app.N_smLabel.Layout.Column = 1;
+            app.N_smLabel.Text = 'Number of samples: ';
+
+            % Create NumberofsamplesEditField
+            app.NumberofsamplesEditField = uieditfield(app.GridLayout29, 'numeric');
+            app.NumberofsamplesEditField.Layout.Row = 8;
+            app.NumberofsamplesEditField.Layout.Column = 2;
+
+            % Create IsotropicspectrumDropDown_2Label
+            app.IsotropicspectrumDropDown_2Label = uilabel(app.GridLayout29);
+            app.IsotropicspectrumDropDown_2Label.HorizontalAlignment = 'center';
+            app.IsotropicspectrumDropDown_2Label.Layout.Row = 3;
+            app.IsotropicspectrumDropDown_2Label.Layout.Column = 1;
+            app.IsotropicspectrumDropDown_2Label.Text = 'Isotropic spectrum';
+
+            % Create IsotropicspectrumDropDown_2
+            app.IsotropicspectrumDropDown_2 = uidropdown(app.GridLayout29);
+            app.IsotropicspectrumDropDown_2.Items = {'Apel ', 'Elfouhaily', 'Donelan'};
+            app.IsotropicspectrumDropDown_2.Layout.Row = 3;
+            app.IsotropicspectrumDropDown_2.Layout.Column = 2;
+            app.IsotropicspectrumDropDown_2.Value = 'Apel ';
+
+            % Create GridLayout32
+            app.GridLayout32 = uigridlayout(app.GridLayout28);
+            app.GridLayout32.ColumnWidth = {'1x'};
+            app.GridLayout32.RowHeight = {'1x', '1x', '1x'};
+            app.GridLayout32.RowSpacing = 6;
+            app.GridLayout32.Padding = [0 0 0 0];
+            app.GridLayout32.Layout.Row = 2;
+            app.GridLayout32.Layout.Column = 1;
+
+            % Create GenerateprofilesButton
+            app.GenerateprofilesButton = uibutton(app.GridLayout32, 'push');
+            app.GenerateprofilesButton.ButtonPushedFcn = createCallbackFcn(app, @GenerateprofilesButtonPushed, true);
+            app.GenerateprofilesButton.Layout.Row = 1;
+            app.GenerateprofilesButton.Layout.Column = 1;
+            app.GenerateprofilesButton.Text = 'Generate profiles';
+
+            % Create ClearprofilesButton
+            app.ClearprofilesButton = uibutton(app.GridLayout32, 'push');
+            app.ClearprofilesButton.ButtonPushedFcn = createCallbackFcn(app, @ClearprofilesButtonPushed, true);
+            app.ClearprofilesButton.Layout.Row = 2;
+            app.ClearprofilesButton.Layout.Column = 1;
+            app.ClearprofilesButton.Text = 'Clear profiles';
+
+            % Create ExportprofilesButton
+            app.ExportprofilesButton = uibutton(app.GridLayout32, 'push');
+            app.ExportprofilesButton.ButtonPushedFcn = createCallbackFcn(app, @ExportprofilesButtonPushed, true);
+            app.ExportprofilesButton.Layout.Row = 3;
+            app.ExportprofilesButton.Layout.Column = 1;
+            app.ExportprofilesButton.Text = 'Export profiles';
+
+            % Create GridLayout30
+            app.GridLayout30 = uigridlayout(app.GridLayout27);
+            app.GridLayout30.ColumnWidth = {'1x'};
+            app.GridLayout30.RowHeight = {'1x', 130};
+            app.GridLayout30.Padding = [0 0 0 0];
+            app.GridLayout30.Layout.Row = 1;
+            app.GridLayout30.Layout.Column = 2;
+
+            % Create UIAxes4
+            app.UIAxes4 = uiaxes(app.GridLayout30);
+            xlabel(app.UIAxes4, 'X')
+            ylabel(app.UIAxes4, 'Y')
+            zlabel(app.UIAxes4, 'Z')
+            app.UIAxes4.Layout.Row = 1;
+            app.UIAxes4.Layout.Column = 1;
+
+            % Create ProfilestatisticPanel
+            app.ProfilestatisticPanel = uipanel(app.GridLayout30);
+            app.ProfilestatisticPanel.TitlePosition = 'centertop';
+            app.ProfilestatisticPanel.Title = 'Profile  statistic ';
+            app.ProfilestatisticPanel.Layout.Row = 2;
+            app.ProfilestatisticPanel.Layout.Column = 1;
+            app.ProfilestatisticPanel.FontWeight = 'bold';
+            app.ProfilestatisticPanel.FontSize = 14;
+
+            % Create GridLayout31
+            app.GridLayout31 = uigridlayout(app.ProfilestatisticPanel);
+            app.GridLayout31.ColumnWidth = {80, '1x', 80, '1x'};
+            app.GridLayout31.ColumnSpacing = 6;
+            app.GridLayout31.RowSpacing = 8;
+
+            % Create ZminLabel_2
+            app.ZminLabel_2 = uilabel(app.GridLayout31);
+            app.ZminLabel_2.HorizontalAlignment = 'center';
+            app.ZminLabel_2.Layout.Row = 1;
+            app.ZminLabel_2.Layout.Column = 1;
+            app.ZminLabel_2.Text = 'Zmin';
+
+            % Create ZmeanLabel_2
+            app.ZmeanLabel_2 = uilabel(app.GridLayout31);
+            app.ZmeanLabel_2.HorizontalAlignment = 'center';
+            app.ZmeanLabel_2.Layout.Row = 2;
+            app.ZmeanLabel_2.Layout.Column = 1;
+            app.ZmeanLabel_2.Text = 'Zmean';
+
+            % Create Label_5
+            app.Label_5 = uilabel(app.GridLayout31);
+            app.Label_5.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_5.HorizontalAlignment = 'center';
+            app.Label_5.Layout.Row = 1;
+            app.Label_5.Layout.Column = 2;
+            app.Label_5.Text = '';
+
+            % Create Label_6
+            app.Label_6 = uilabel(app.GridLayout31);
+            app.Label_6.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_6.HorizontalAlignment = 'center';
+            app.Label_6.Layout.Row = 2;
+            app.Label_6.Layout.Column = 2;
+            app.Label_6.Text = '';
+
+            % Create ZmaxLabel_2
+            app.ZmaxLabel_2 = uilabel(app.GridLayout31);
+            app.ZmaxLabel_2.HorizontalAlignment = 'center';
+            app.ZmaxLabel_2.Layout.Row = 1;
+            app.ZmaxLabel_2.Layout.Column = 3;
+            app.ZmaxLabel_2.Text = 'Zmax';
+
+            % Create ZstdLabel_2
+            app.ZstdLabel_2 = uilabel(app.GridLayout31);
+            app.ZstdLabel_2.HorizontalAlignment = 'center';
+            app.ZstdLabel_2.Layout.Row = 2;
+            app.ZstdLabel_2.Layout.Column = 3;
+            app.ZstdLabel_2.Text = 'Zstd';
+
+            % Create Label_7
+            app.Label_7 = uilabel(app.GridLayout31);
+            app.Label_7.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_7.HorizontalAlignment = 'center';
+            app.Label_7.Layout.Row = 1;
+            app.Label_7.Layout.Column = 4;
+            app.Label_7.Text = '';
+
+            % Create Label_8
+            app.Label_8 = uilabel(app.GridLayout31);
+            app.Label_8.BackgroundColor = [0.8 0.8 0.8];
+            app.Label_8.HorizontalAlignment = 'center';
+            app.Label_8.Layout.Row = 2;
+            app.Label_8.Layout.Column = 4;
+            app.Label_8.Text = '';
+
+            % Create SeaProfileRadarSimulatorTab
+            app.SeaProfileRadarSimulatorTab = uitab(app.TabGroup);
+            app.SeaProfileRadarSimulatorTab.Title = 'Sea Profile Radar Simulator';
+
+            % Create GridLayout25_2
+            app.GridLayout25_2 = uigridlayout(app.SeaProfileRadarSimulatorTab);
+            app.GridLayout25_2.ColumnWidth = {'1x'};
+            app.GridLayout25_2.RowHeight = {50, '1x'};
+            app.GridLayout25_2.RowSpacing = 4;
+            app.GridLayout25_2.Padding = [8 0 10 10];
+
+            % Create GridLayout26_2
+            app.GridLayout26_2 = uigridlayout(app.GridLayout25_2);
+            app.GridLayout26_2.ColumnWidth = {'1x', 90, 90};
+            app.GridLayout26_2.RowHeight = {'1x'};
+            app.GridLayout26_2.ColumnSpacing = 8;
+            app.GridLayout26_2.Padding = [5 5 10 10];
+            app.GridLayout26_2.Layout.Row = 1;
+            app.GridLayout26_2.Layout.Column = 1;
+
+            % Create GenerationofSeaProfilesLabel_2
+            app.GenerationofSeaProfilesLabel_2 = uilabel(app.GridLayout26_2);
+            app.GenerationofSeaProfilesLabel_2.FontSize = 18;
+            app.GenerationofSeaProfilesLabel_2.FontWeight = 'bold';
+            app.GenerationofSeaProfilesLabel_2.Layout.Row = 1;
+            app.GenerationofSeaProfilesLabel_2.Layout.Column = 1;
+            app.GenerationofSeaProfilesLabel_2.Text = 'Generation of Sea Profiles';
+
+            % Create Image7_2
+            app.Image7_2 = uiimage(app.GridLayout26_2);
+            app.Image7_2.Layout.Row = 1;
+            app.Image7_2.Layout.Column = 2;
+            app.Image7_2.ImageSource = fullfile(pathToMLAPP, 'logo_icam.png');
+
+            % Create Image8_2
+            app.Image8_2 = uiimage(app.GridLayout26_2);
+            app.Image8_2.Layout.Row = 1;
+            app.Image8_2.Layout.Column = 3;
+            app.Image8_2.ImageSource = fullfile(pathToMLAPP, 'logo_ietr.png');
+
+            % Create GridLayout27_2
+            app.GridLayout27_2 = uigridlayout(app.GridLayout25_2);
+            app.GridLayout27_2.ColumnWidth = {480, '1x'};
+            app.GridLayout27_2.RowHeight = {'1x'};
+            app.GridLayout27_2.Padding = [0 0 0 0];
+            app.GridLayout27_2.Layout.Row = 2;
+            app.GridLayout27_2.Layout.Column = 1;
+
+            % Create GridLayout28_2
+            app.GridLayout28_2 = uigridlayout(app.GridLayout27_2);
+            app.GridLayout28_2.ColumnWidth = {'1x'};
+            app.GridLayout28_2.RowHeight = {'fit', 130};
+            app.GridLayout28_2.RowSpacing = 8;
+            app.GridLayout28_2.Padding = [0 0 0 0];
+            app.GridLayout28_2.Layout.Row = 1;
+            app.GridLayout28_2.Layout.Column = 1;
+
+            % Create GridLayout29_2
+            app.GridLayout29_2 = uigridlayout(app.GridLayout28_2);
+            app.GridLayout29_2.ColumnWidth = {250, '1x'};
+            app.GridLayout29_2.RowHeight = {29, 29, 29, 29, 29, 29, 29};
+            app.GridLayout29_2.Layout.Row = 1;
+            app.GridLayout29_2.Layout.Column = 1;
+
+            % Create InputparametersLabel_2
+            app.InputparametersLabel_2 = uilabel(app.GridLayout29_2);
+            app.InputparametersLabel_2.FontSize = 14;
+            app.InputparametersLabel_2.FontWeight = 'bold';
+            app.InputparametersLabel_2.Layout.Row = 1;
+            app.InputparametersLabel_2.Layout.Column = [1 2];
+            app.InputparametersLabel_2.Text = 'Input parameters';
+
+            % Create Windspeedu10msEditField_4Label
+            app.Windspeedu10msEditField_4Label = uilabel(app.GridLayout29_2);
+            app.Windspeedu10msEditField_4Label.HorizontalAlignment = 'center';
+            app.Windspeedu10msEditField_4Label.Layout.Row = 2;
+            app.Windspeedu10msEditField_4Label.Layout.Column = 1;
+            app.Windspeedu10msEditField_4Label.Text = 'Wind speed u10 (m/s):';
+
+            % Create Windspeedu10msEditField_4
+            app.Windspeedu10msEditField_4 = uieditfield(app.GridLayout29_2, 'numeric');
+            app.Windspeedu10msEditField_4.Layout.Row = 2;
+            app.Windspeedu10msEditField_4.Layout.Column = 2;
+
+            % Create FetchmEditField_4Label
+            app.FetchmEditField_4Label = uilabel(app.GridLayout29_2);
+            app.FetchmEditField_4Label.HorizontalAlignment = 'center';
+            app.FetchmEditField_4Label.Layout.Row = 3;
+            app.FetchmEditField_4Label.Layout.Column = 1;
+            app.FetchmEditField_4Label.Text = 'Fetch (m):';
+
+            % Create FetchmEditField_4
+            app.FetchmEditField_4 = uieditfield(app.GridLayout29_2, 'numeric');
+            app.FetchmEditField_4.Layout.Row = 3;
+            app.FetchmEditField_4.Layout.Column = 2;
+
+            % Create LengthmEditField_2Label
+            app.LengthmEditField_2Label = uilabel(app.GridLayout29_2);
+            app.LengthmEditField_2Label.HorizontalAlignment = 'center';
+            app.LengthmEditField_2Label.Layout.Row = 4;
+            app.LengthmEditField_2Label.Layout.Column = 1;
+            app.LengthmEditField_2Label.Text = 'Length (m):';
+
+            % Create LengthmEditField_2
+            app.LengthmEditField_2 = uieditfield(app.GridLayout29_2, 'numeric');
+            app.LengthmEditField_2.Layout.Row = 4;
+            app.LengthmEditField_2.Layout.Column = 2;
+
+            % Create RadarfrequencyGHz130GHz2308cmEditField_3Label
+            app.RadarfrequencyGHz130GHz2308cmEditField_3Label = uilabel(app.GridLayout29_2);
+            app.RadarfrequencyGHz130GHz2308cmEditField_3Label.HorizontalAlignment = 'center';
+            app.RadarfrequencyGHz130GHz2308cmEditField_3Label.Layout.Row = 5;
+            app.RadarfrequencyGHz130GHz2308cmEditField_3Label.Layout.Column = 1;
+            app.RadarfrequencyGHz130GHz2308cmEditField_3Label.Text = {'Radar frequency (GHz): '; '1.30 GHz → λ = 23.08 cm'};
+
+            % Create RadarfrequencyGHz130GHz2308cmEditField_3
+            app.RadarfrequencyGHz130GHz2308cmEditField_3 = uieditfield(app.GridLayout29_2, 'numeric');
+            app.RadarfrequencyGHz130GHz2308cmEditField_3.Layout.Row = 5;
+            app.RadarfrequencyGHz130GHz2308cmEditField_3.Layout.Column = 2;
+            app.RadarfrequencyGHz130GHz2308cmEditField_3.Value = 2;
+
+            % Create SamplesperwavelengthEditField_3Label
+            app.SamplesperwavelengthEditField_3Label = uilabel(app.GridLayout29_2);
+            app.SamplesperwavelengthEditField_3Label.HorizontalAlignment = 'center';
+            app.SamplesperwavelengthEditField_3Label.Layout.Row = 6;
+            app.SamplesperwavelengthEditField_3Label.Layout.Column = 1;
+            app.SamplesperwavelengthEditField_3Label.Text = 'Samples per wavelength (-):';
+
+            % Create SamplesperwavelengthEditField_3
+            app.SamplesperwavelengthEditField_3 = uieditfield(app.GridLayout29_2, 'numeric');
+            app.SamplesperwavelengthEditField_3.Layout.Row = 6;
+            app.SamplesperwavelengthEditField_3.Layout.Column = 2;
+
+            % Create NumberofsamplesEditField_3Label
+            app.NumberofsamplesEditField_3Label = uilabel(app.GridLayout29_2);
+            app.NumberofsamplesEditField_3Label.HorizontalAlignment = 'center';
+            app.NumberofsamplesEditField_3Label.Layout.Row = 7;
+            app.NumberofsamplesEditField_3Label.Layout.Column = 1;
+            app.NumberofsamplesEditField_3Label.Text = 'Number of samples: ';
+
+            % Create NumberofsamplesEditField_3
+            app.NumberofsamplesEditField_3 = uieditfield(app.GridLayout29_2, 'numeric');
+            app.NumberofsamplesEditField_3.Layout.Row = 7;
+            app.NumberofsamplesEditField_3.Layout.Column = 2;
+
+            % Create GridLayout32_2
+            app.GridLayout32_2 = uigridlayout(app.GridLayout28_2);
+            app.GridLayout32_2.ColumnWidth = {'1x'};
+            app.GridLayout32_2.RowHeight = {'1x', '1x', '1x'};
+            app.GridLayout32_2.RowSpacing = 6;
+            app.GridLayout32_2.Padding = [0 0 0 0];
+            app.GridLayout32_2.Layout.Row = 2;
+            app.GridLayout32_2.Layout.Column = 1;
+
+            % Create CalculateButton_3
+            app.CalculateButton_3 = uibutton(app.GridLayout32_2, 'push');
+            app.CalculateButton_3.ButtonPushedFcn = createCallbackFcn(app, @CalculateButton_3Pushed, true);
+            app.CalculateButton_3.Layout.Row = 1;
+            app.CalculateButton_3.Layout.Column = 1;
+            app.CalculateButton_3.Text = 'Calculate';
+
+            % Create ClearButton_3
+            app.ClearButton_3 = uibutton(app.GridLayout32_2, 'push');
+            app.ClearButton_3.ButtonPushedFcn = createCallbackFcn(app, @ClearButton_3Pushed, true);
+            app.ClearButton_3.Layout.Row = 2;
+            app.ClearButton_3.Layout.Column = 1;
+            app.ClearButton_3.Text = 'Clear ';
+
+            % Create ExportprofilesButton_2
+            app.ExportprofilesButton_2 = uibutton(app.GridLayout32_2, 'push');
+            app.ExportprofilesButton_2.Layout.Row = 3;
+            app.ExportprofilesButton_2.Layout.Column = 1;
+            app.ExportprofilesButton_2.Text = 'Export profiles';
+
+            % Create GridLayout30_2
+            app.GridLayout30_2 = uigridlayout(app.GridLayout27_2);
+            app.GridLayout30_2.ColumnWidth = {'1x'};
+            app.GridLayout30_2.RowHeight = {'1x'};
+            app.GridLayout30_2.Padding = [0 0 0 0];
+            app.GridLayout30_2.Layout.Row = 1;
+            app.GridLayout30_2.Layout.Column = 2;
+
+            % Create UIAxes4_2
+            app.UIAxes4_2 = uiaxes(app.GridLayout30_2);
+            xlabel(app.UIAxes4_2, 'X')
+            ylabel(app.UIAxes4_2, 'Y')
+            zlabel(app.UIAxes4_2, 'Z')
+            app.UIAxes4_2.Layout.Row = 1;
+            app.UIAxes4_2.Layout.Column = 1;
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = app1firstversion
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            % Execute the startup function
+            runStartupFcn(app, @startupFcn)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
