@@ -18,7 +18,7 @@ function [ H , X_h , S_K , K , ls_gen , k_min , k_max ] = ...
 % n_s       : (Power-of-2) number of samples of the surface [scalar]
 % sd        : Seed of the generated white Gaussian noise (-) [scalar]
 % fetch_m   : Fetch = length of action of wind on the sea (m) [scalar]
-% prec  : Precision of the calculation (1=single or 2=double) [scalar]
+% prec  : Precision of the calculation (1=single or 2=double) [scalar] 
 %--------------------------------------------------------------------------
 % Output variables:
 % H     : Heights of the sea surface (m) [Vector]
